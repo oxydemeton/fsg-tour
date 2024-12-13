@@ -1,0 +1,15 @@
+{
+    "slug": "002",
+    "images": [
+        {"img":"./a.jpg"},
+        {
+            "img":"./b.jpg",
+            "connection": {
+                "room": "001",
+                "imageIndex": 0
+            }
+        },
+        {"img":"./c.jpg"}
+    ],
+    "circle": false
+}

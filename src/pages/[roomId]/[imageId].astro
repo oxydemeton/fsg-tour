@@ -1,0 +1,28 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { ACTION_ERROR_CODES } from "astro:actions";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+    const rooms = await getCollection('rooms')
+    return rooms.flatMap((room)=>{
+        return room.data.images.map((_, i)=>{
+            return {
+                params: {roomId: room.id, imageId: i},
+                props: {room, imageId: i}
+            }
+        })
+    });
+};
+
+/*export const getStaticPaths = ( async () => {
+    const rooms = await getCollection("rooms")
+    return rooms.map();
+}) satisfies GetStaticPaths;*/
+
+const {room, imageId} = Astro.props
+console.log(room);
+
+---
+<h1>{room.id}</h1>
+<Image src={room.data.images[imageId].img} alt={`Raum: ${room.id} Bild Nr. ${imageId}`}/>
