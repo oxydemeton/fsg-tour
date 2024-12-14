@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { undefined } from "astro:schema";
+
 export async function getStaticPaths() {
     const rooms = await getCollection('rooms')
     return rooms.flatMap((room)=>{
         return room.data.images.map((_, i)=>{
             return {
-                params: {roomId: room.id, imageId: i},
+                params: {imageId: `${room.id}/${i}`},
                 props: {room, imageId: i}
             }
         })
