@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import Layout from '../layouts/Layout.astro';
 
 export async function getStaticPaths() {
     const rooms = await getCollection('rooms')
@@ -23,9 +24,16 @@ const {room, imageId} = Astro.props
 const image = room.data.images[imageId]
 
 ---
-<h1>{room.id}</h1>
-<Image src={image.img} alt={`Raum: ${room.id} Bild Nr. ${imageId}`}/>
-{
-    (typeof image.connection !== "undefined") &&
-    (<a href={`/${image.connection.room.id}/${image.connection.imageIndex}`}>Zum angrenzenden Raum</a>)
-}
+
+<Layout>
+    <h1>{room.id}:{imageId}</h1>
+    <div class="relative font-bold text-xl font-serif h-min">
+        <Image src={image.img} alt={`Raum: ${room.id} Bild Nr. ${imageId}`} transition:animate={"slide"} class="w-[min(100%, 95lvh)]"/>
+        <a href=`./${(imageId <= 0)?room.data.images.length-1: imageId-1}` class="absolute top-[50%] left-4 text-center flex items-center">&lt&lt</a>
+        <a href=`./${(imageId >= room.data.images.length-1)? 0: imageId+1}` class="absolute top-[50%] right-4 flex items-center">&gt&gt</a>
+    </div>
+    {
+        (typeof image.connection !== "undefined") &&
+        (<a href={`/${image.connection.room.id}/${image.connection.imageIndex}`}>Zum angrenzenden Raum</a>)
+    }
+</Layout>
