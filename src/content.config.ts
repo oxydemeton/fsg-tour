@@ -3,7 +3,7 @@ import { defineCollection, reference, z } from 'astro:content';
 import { glob, file, } from 'astro/loaders';
 
 const rooms = defineCollection({
-    loader: glob({pattern: "**/room.json", base: "./src/data/rooms"}),
+    loader: glob({pattern: "**/*.json", base: "./src/data/rooms"}),
     schema: ({image}) => z.object({
         images: z.array(
             z.object({
