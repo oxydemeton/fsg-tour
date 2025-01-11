@@ -1,12 +1,12 @@
 name: "Oberer Kunstraum"
 nummer: "1.411.1"
 bilder:
+  - name: "nord"
   - name: "ost"
     verbindung: "1.412/ost"
-  - name: "nord"
-  - name: "west"
   - name: "süd"
     verbindung: "1.411.2/süd" 
+  - name: "west"
 
 ---
 name: "Oberer Kunstraum Nebenraum"
@@ -40,7 +40,7 @@ bilder:
   - name: "süd"
     verbindung: "1.413/west"
   - name: "west"
-    verbindung: "1.411.2/west"
+    verbindung: "1.411.2/west" #Weiteres Bild in Richtung WC und link richtung Süden?
 ---
 
 name: "oberer Putzraum"
