@@ -7,5 +7,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   compressHTML: true,
-  site: "https://oxydemeton.github.io"
+  site: "https://oxydemeton.github.io",
+  base: "fsg-tour"
 });
