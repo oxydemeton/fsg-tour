@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import { undefined } from "astro:schema";
 
 export async function getStaticPaths() {
     const rooms = await getCollection('room2')
@@ -22,10 +23,41 @@ export async function getStaticPaths() {
 }) satisfies GetStaticPaths;*/
 
 const {room, imageId} = Astro.props
+const data = room.data
 const local = Astro.props.room.data.bilder[imageId]
-
+const prevImageUrl = `/${data.slug}/${data.bilder.at(imageId-1)?.name}`
+const nextImageUrl = `/${data.slug}/${data.bilder.at((imageId+1)%data.bilder.length)?.name}`
 ---
 
 <Layout>
-<Image src={local.image} alt={local.name} width={1920}></Image>
+    <h1>{room.data.name}</h1>
+    <h2>Richtung: {local.name}</h2>
+    <div class="relative">
+        <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch>
+            <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
+                <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round">
+            </svg>
+        </a>
+        <Image src={local.image} alt={local.name} width={1920}></Image>
+        {(typeof local.verbindung === "string") ? 
+            <a href={`/${local.verbindung}`} class="absolute top-[50%] right-[50%]" data-astro-prefetch>
+                <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                    <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
+                    <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
+                </svg>
+            </a>
+            : undefined}
+        <a href={nextImageUrl} class="absolute top-[50%] right-4 rotate-90" data-astro-prefetch>
+            <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
+                <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
+            </svg>
+        </a>
+    </div>
 </Layout>
+<style>
+    a {
+        @apply text-white/80 font-black text-3xl;
+    }
+</style>
