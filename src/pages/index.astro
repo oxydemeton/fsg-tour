@@ -4,10 +4,18 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection, getEntry } from 'astro:content';
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-console.log((await getCollection("room2")).map(v=>v.data.bilder));
+
+const rooms = await getCollection("room2")
+console.log(rooms);
 
 ---
 
 <Layout>
-	<Welcome />
+	<h1>FSG Roomtour</h1>
+	<h2>Räume:</h2>
+	<ol>
+		{rooms.map(r=><li>
+			<a href={`/${r.id}/nord`}>{r.id}</a>
+		</li>)}
+	</ol>
 </Layout>
