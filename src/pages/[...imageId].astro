@@ -25,8 +25,8 @@ const {room, imageId} = Astro.props
 const data = room.data
 const baseUrl = import.meta.env.BASE_URL
 const local = Astro.props.room.data.bilder[imageId]
-const prevImageUrl = `/${baseUrl}/${data.slug}/${data.bilder.at(imageId-1)?.name}`
-const nextImageUrl = `/${baseUrl}/${data.slug}/${data.bilder.at((imageId+1)%data.bilder.length)?.name}`
+const prevImageUrl = `${baseUrl}/${data.slug}/${data.bilder.at(imageId-1)?.name}`
+const nextImageUrl = `${baseUrl}/${data.slug}/${data.bilder.at((imageId+1)%data.bilder.length)?.name}`
 
 ---
 
@@ -42,7 +42,7 @@ const nextImageUrl = `/${baseUrl}/${data.slug}/${data.bilder.at((imageId+1)%data
             </svg>
         </a>
         {(typeof local.verbindung === "string") ? 
-            <a href={`/${baseUrl}/${local.verbindung}`} class="absolute top-[50%] right-[50%]" data-astro-prefetch>
+            <a href={`${baseUrl}/${local.verbindung}`} class="absolute top-[50%] right-[50%]" data-astro-prefetch>
                 <svg viewBox="-2 -2 12 12" class="w-8 h-8">
                     <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
                     <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>

@@ -15,7 +15,7 @@ const base = import.meta.env.BASE_URL
 	<h2>Räume:</h2>
 	<ol>
 		{rooms.map(r=><li>
-			<a href={`/${base}/${r.id}/nord`}>{r.id}</a>
+			<a href={`${base}/${r.id}/nord`}>{r.id}</a>
 		</li>)}
 	</ol>
 </Layout>
