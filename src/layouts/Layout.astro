@@ -1,5 +1,15 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+interface Props {
+	title?: string,
+	preloads?: {
+		href: string,
+		priority: "low" | "auto" | "high",
+		rel: "prefetch" | "prelaod" | "prerender",
+		as: "font" | "image" | "audio" | "video"
+	}[]
+}
+const { title, preloads } = Astro.props
 ---
 
 <!doctype html>
@@ -10,8 +20,12 @@ import { ClientRouter } from 'astro:transitions';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-		
+		<title>{title || "FSG-Tour"}</title>
+		{
+			preloads?.map(tag=>{
+				return <link href={tag.href} rel={tag.rel} fetchpriority={tag.priority} as={tag.as} />
+			})
+		}
 	</head>
 	<body>
 		<slot />
