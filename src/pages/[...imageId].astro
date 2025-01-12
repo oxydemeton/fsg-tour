@@ -26,10 +26,14 @@ const nextImageUrl = `${baseUrl}/${data.slug}/${data.bilder.at((imageId+1)%data.
 const transitImageUrl = `${baseUrl}/${local.verbindung}`
 const imageRatio = local.image.width/local.image.height
 const originalImage = await getImage({src: local.image, format: "jpg", quality: 95})
-const lowQuality = await getImage({src: local.image, format: "webp", width: 64, quality: 60})
+const lowQualitySettings = {format: "webp", width: 64, quality: 60}
+const lowQuality = await getImage({src: local.image, ...lowQualitySettings})
+const prevLowQuality = await getImage({src: data.bilder.at(imageId-1)!.image, ...lowQualitySettings})
+const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bilder.length)!.image, ...lowQualitySettings})
+//TODO prefetch transit low quality image
 ---
 
-<Layout title={`FSG-Tour - ${room.data.name}`}>
+<Layout title={`FSG-Tour - ${room.data.name}`} preloads={[{href: prevLowQuality.src, priority: "low", rel: "prefetch", as: "image"},  {href: nextLowQuality.src, priority: "low", rel: "prefetch", as: "image"}]}>
     <h1 class="text-center">{room.data.name}</h1>
     <h2 class="text-center">Richtung: {local.name}</h2>
     <div class="flex justify-center">
