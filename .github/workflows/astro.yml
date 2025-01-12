@@ -66,6 +66,12 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
+
+      - name: Get Build Cache
+        uses: actions/cache/restore@v4
+        with: 
+          path: "buildCache"
+
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
@@ -76,6 +82,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.BUILD_PATH }}/dist
+      - name: Save Build Cache
+        uses: actions/cache/save@v4
+        with:
+          path: "buildCache"
 
   deploy:
     environment:
