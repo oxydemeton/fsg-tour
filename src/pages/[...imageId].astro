@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import { Image, Picture } from 'astro:assets';
+import { getImage, Image, Picture } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import AttachIcon from "../assets/icons/attach.svg";
 
 export async function getStaticPaths() {
     const rooms = await getCollection('rooms')
@@ -16,11 +17,6 @@ export async function getStaticPaths() {
     });
 };
 
-/*export const getStaticPaths = ( async () => {
-    const rooms = await getCollection("rooms")
-    return rooms.map();
-}) satisfies GetStaticPaths;*/
-
 const {room, imageId} = Astro.props
 const data = room.data
 const baseUrl = import.meta.env.BASE_URL
@@ -29,34 +25,38 @@ const prevImageUrl = `${baseUrl}/${data.slug}/${data.bilder.at(imageId-1)?.name}
 const nextImageUrl = `${baseUrl}/${data.slug}/${data.bilder.at((imageId+1)%data.bilder.length)?.name}`
 const transitImageUrl = `${baseUrl}/${local.verbindung}`
 const imageRatio = local.image.width/local.image.height
+const originalImage = await getImage({src: local.image, format: "png"})
 ---
 
 <Layout title={`FSG-Tour - ${room.data.name}`}>
     <h1 class="text-center">{room.data.name}</h1>
     <h2 class="text-center">Richtung: {local.name}</h2>
     <div class="flex justify-center">
-        <div class="relative" style={`width: min(95vw, 95svh*${imageRatio})`}>
-            <Picture formats={["avif", "jpg"]} quality={50} src={local.image} alt={local.name} width={1920} transition:animate="fade" class="-z-10"/>
-            <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch="viewport">
-                <svg viewBox="-2 -2 12 12" class="w-8 h-8">
-                    <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
-                    <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round">
-                </svg>
-            </a>
-            {(typeof local.verbindung === "string") ? 
-                <a href={transitImageUrl} class="absolute top-[50%] right-[50%]" data-astro-prefetch="viewport">
+        <div>
+            <div class="relative" style={`width: min(95vw, 95svh*${imageRatio})`}>
+                <Picture formats={["avif", "jpg"]} quality={50} src={local.image} alt={local.name} width={1920} transition:animate="fade" class="-z-10"/>
+                <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch="viewport">
+                    <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                        <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
+                        <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round">
+                    </svg>
+                </a>
+                {(typeof local.verbindung === "string") ? 
+                    <a href={transitImageUrl} class="absolute top-[50%] right-[50%]" data-astro-prefetch="viewport">
+                        <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                            <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
+                            <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                    : undefined}
+                <a href={nextImageUrl} class="absolute top-[50%] right-4 rotate-90" data-astro-prefetch="viewport">
                     <svg viewBox="-2 -2 12 12" class="w-8 h-8">
                         <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
                         <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
                     </svg>
                 </a>
-                : undefined}
-            <a href={nextImageUrl} class="absolute top-[50%] right-4 rotate-90" data-astro-prefetch="viewport">
-                <svg viewBox="-2 -2 12 12" class="w-8 h-8">
-                    <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
-                    <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
-                </svg>
-            </a>
+            </div>
+            <a href={originalImage.src} class="w-full hover:italic focus-visible:italic "><Image src={AttachIcon} alt="Attachment Icon" class="inline-block rotate-45"/>Original Bild</a>
         </div>
     </div>
 </Layout>
