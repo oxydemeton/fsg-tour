@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-    const rooms = await getCollection('room2')
+    const rooms = await getCollection('rooms')
     
     return rooms.flatMap((room)=>{
         return room.data.bilder.map((img, i)=>{

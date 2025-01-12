@@ -3,7 +3,7 @@ import { file, } from 'astro/loaders';
 import { parseAll } from "@std/yaml";
 
 
-const room2 = defineCollection({
+const rooms = defineCollection({
     loader: file("./src/data/rooms.yaml", {parser: (txt)=>{
         const fixedTxt = txt.split("\n").map(line=>{
             if (line.trim().startsWith("- name:")) {
@@ -53,4 +53,4 @@ const room2 = defineCollection({
     }),
 })
 
-export const collections = {room2}
+export const collections = {rooms}
