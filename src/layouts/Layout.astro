@@ -10,6 +10,7 @@ interface Props {
 	}[]
 }
 const { title, preloads } = Astro.props
+const isDev = import.meta.env.MODE === "development"
 ---
 
 <!doctype html>
@@ -20,6 +21,11 @@ const { title, preloads } = Astro.props
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		{
+			isDev?
+				<meta http-equiv="content-security-policy" content="script-src 'self' 'unsafe-inline'; object-src 'none'; img-src 'self';style-src 'self' 'unsafe-inline';upgrade-insecure-requests;"/>
+				:<meta http-equiv="content-security-policy" content="script-src 'self'; object-src 'none'; img-src 'self';style-src 'self' 'unsafe-inline';upgrade-insecure-requests;"/>
+		}
 		<title>{title || "FSG-Tour"}</title>
 		{
 			preloads?.map(tag=>{
