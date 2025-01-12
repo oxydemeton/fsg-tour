@@ -71,6 +71,7 @@ jobs:
         uses: actions/cache/restore@v4
         with: 
           path: "buildCache"
+          key: ${{ runner.os }}-astro-build-cache
 
       - name: Build with Astro
         run: |
@@ -86,6 +87,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: "buildCache"
+          key: ${{ runner.os }}-astro-build-cache
 
   deploy:
     environment:
