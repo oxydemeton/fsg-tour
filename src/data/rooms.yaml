@@ -33,24 +33,24 @@ bilder:
 name: "Oberer Flur links"
 nummer: "1.402.1"
 bilder: 
-  - name: "nord"
-    verbindung: "1.410/nord"
-  - name: "ost"
-    verbindung: "1.402.2/ost"
-  - name: "süd"
-    verbindung: "1.413/west"
-  - name: "west"
-    verbindung: "1.411.2/west" #Weiteres Bild in Richtung WC und link richtung Süden?
+ - name: "nord"
+   verbindung: "1.410/nord"
+ - name: "ost"
+   verbindung: "1.402.2/ost"
+ - name: "süd"
+   verbindung: "1.413/west"
+ - name: "west"
+   verbindung: "1.411.2/west"
 ---
 
 name: "oberer Putzraum"
 nummer: "1.410"
 bilder:
-  - name: "nord"
-  - name: "ost"
-  - name: "süd"
-    verbindung: "1.402.1/süd"
-  - name: "west"
+- name: "nord"
+- name: "ost"
+- name: "süd"
+  verbindung: "1.402.1/süd"
+- name: "west"
 ---
 
 name: "Oberes WC"
@@ -66,48 +66,48 @@ bilder:
 name: "Oberer Flur links"
 nummer: "1.402.2"
 bilder:
-- name: "nord"
-  verbindung: "1.409.1"
-- name: "ost"
-  verbindung: "1.402.3/ost"
-- name: "süd"
-  verbindung: "1.402.5/süd"
-- name: "west"
-  verbindung: "1.402.1/west"
+ - name: "nord"
+   verbindung: "1.409.1"
+ - name: "ost"
+   verbindung: "1.402.3/ost"
+ - name: "süd"
+   verbindung: "1.402.5/süd"
+ - name: "west"
+   verbindung: "1.402.1/west"
 ---
 
 name: "Oberer Flur links"
 nummer: "1.402.5"
 bilder:
-- name: "nord"
-  verbindung: "1.402.2/nord"
-- name: "ost"
-- name: "süd"
-  verbindung: "1.402.6/süd"
-- name: "west"
-  verbindung: "1.414.1/west"
+  - name: "nord"
+    verbindung: "1.402.2/nord"
+  - name: "ost"
+  - name: "süd"
+    verbindung: "1.402.6/süd"
+  - name: "west"
+    verbindung: "1.414.1/west"
 ---
 
 name: "Klassenraum"
 nummer: "1.414.1"
 bilder:
-- name: "nord"
-- name: "ost"
-  verbindung: "1.402.5/ost"
-- name: "süd"
-- name: "west"
-  verbindung: "1.414.2/west"
+  - name: "nord"
+  - name: "ost"
+    verbindung: "1.402.5/ost"
+  - name: "süd"
+  - name: "west"
+    verbindung: "1.414.2/west"
 ---
 
 name: "Klassenraum"
 nummer: "1.414.2"
 bilder:
-  - name: "nord"
-  - name: "ost"
-    verbindung: "1.414.1/ost"
-  - name: "süd"
-    verbindung: "1.414.3/süd"
-  - name: "west"
+- name: "nord"
+- name: "ost"
+  verbindung: "1.414.1/ost"
+- name: "süd"
+  verbindung: "1.414.3/süd"
+- name: "west"
 ---
 
 name: "Klassenraum"
@@ -120,13 +120,150 @@ bilder:
 - name: "west"
 ---
 
-name: "Klassenraum"
+name: "Oberer Flur Links"
 nummer: "1.402.3"
 bilder:
-  - name: "nord"
-    verbindung: "1.408a.1/nord"
-  - name: "ost"
-    verbindung: "1.402.4/ost"
-  - name: "süd"
-  - name: "west"
-    verbindung: "1.402.2/west"
+- name: "nord"
+  verbindung: "1.408a.1/nord"
+- name: "ost"
+  verbindung: "1.402.4/ost"
+- name: "süd"
+- name: "west"
+  verbindung: "1.402.2/west"
+---
+
+name: "Bühne"
+nummer: "1.408a.1"
+bilder:
+- name: "nord"
+  verbindung: "1.408a.2/nord"
+- name: "ost"
+  verbindung: "1.408.1/ost"
+- name: "süd"
+  verbindung: "1.402.3/süd"
+- name: "west"
+---
+
+name: "Bühne"
+nummer: "1.408a.2"
+bilder:
+- name: "nord"
+- name: "ost"
+  verbindung: "1.408.2/ost"
+- name: "süd"
+  verbindung: "1.408a.1/süd"
+- name: "west"
+---
+
+name: "Oberer Flur Links"
+nummer: "1.402.4"
+bilder:
+- name: "nord"
+  verbindung: "1.408.1/nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+  verbindung : "1.402.3/west"
+---
+
+name: "Forum 1"
+nummer: "1.408.1"
+bilder:
+- name: "nord"
+  verbindung: "1.408.2/nord"
+- name: "ost"
+  verbindung: "1.408.3/ost"
+- name: "süd"
+  verbindung: "1.402.4/süd"
+- name: "west"
+  verbindung: "1.408a.1/west"
+---
+
+name: "Forum 1"
+nummer: "1.408.2"
+bilder:
+- name: "nord"
+- name: "ost"
+  verbindung: "1.408.4/ost"
+- name: "süd"
+  verbindung: "1.408.1/süd"
+- name: "west"
+  verbindung: "1.408a.2/west"
+---
+
+name: "Forum 1"
+nummer: "1.408.3"
+bilder:
+- name: "nord"
+  verbindung: "1.408.4/nord"
+- name: "ost"
+  verbindung: "1.408.5/ost"
+- name: "süd"
+- name: "west"
+  verbindung: "1.408.1/west"
+---
+
+name: "Forum 1"
+nummer: "1.408.4"
+bilder:
+- name: "nord"
+- name: "ost"
+  verbindung: "1.408.6/ost"
+- name: "süd"
+  verbindung: "1.408.3/süd"
+- name: "west"
+  verbindung: "1.408.2/west"
+---
+
+name: "Forum 1"
+nummer: "1.408.5"
+bilder:
+- name: "nord"
+  verbindung: "1.408.6/nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+  verbindung: "1.408.3/west"
+---
+
+name: "Forum 1"
+nummer: "1.408.6"
+bilder:
+- name: "nord"
+- name: "ost"
+- name: "süd"
+  verbindung: "1.408.5/süd"
+- name: "west"
+  verbindung: "1.408.4/west"
+---
+
+name: "Klassenraum"
+nummer: "1.407.1"
+bilder:
+- name: "nord"
+- name: "ost"
+  verbindung: "1.407.2/ost"
+- name: "süd"
+- name: "west"
+  verbindung: "1.402.6/west"
+---
+
+name: "Klassenraum"
+nummer: "1.407.2"
+bilder:
+- name: "nord"
+  verbindung: "1.407.3/nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+  verbindung: "1.407.1/west"
+---
+
+name: "Klassenraum"
+nummer: "1.407.3"
+bilder:
+- name: "nord"
+- name: "ost"
+- name: "süd"
+  verbindung: "1.407.2/süd"
+- name: "west"
