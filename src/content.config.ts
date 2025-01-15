@@ -14,32 +14,36 @@ const rooms = defineCollection({
                 return line.trim()
             }
         }).join("\n")
-        const parsed = parseAll(fixedTxt, {onWarning: (err)=>console.error(err)}) as Record<string, unknown>[]
-        
-        const withId = parsed.map((raw, index)=>{
-            return {
-                ...raw,
-                slug: raw.nummer,
-                index,
-                bilder: raw.bilder as {name: string, verbindung?: string}[]
-            }
-        })
-        let imageCounter = 0
-
-        const withImage = withId.map(room => {
-            return {
-                ...room,
-                bilder: room.bilder.map(b=>{
-                    return {
-                        ...b,
-                        image: `./images/${imageCounter++}.png`
-                    }
-                })
-            }
-        })
-
-        //console.log(withImage);
-        return withImage
+        try {
+            const parsed = parseAll(fixedTxt, {onWarning: (err)=>console.error(err)}) as Record<string, unknown>[]
+            const withId = parsed.map((raw, index)=>{
+                return {
+                    ...raw,
+                    slug: raw.nummer,
+                    index,
+                    bilder: raw.bilder as {name: string, verbindung?: string}[]
+                }
+            })
+            let imageCounter = 0
+    
+            const withImage = withId.map(room => {
+                return {
+                    ...room,
+                    bilder: room.bilder.map(b=>{
+                        return {
+                            ...b,
+                            image: `./images/${imageCounter++}.png`
+                        }
+                    })
+                }
+            })
+    
+            //console.log(withImage);
+            return withImage
+        }catch(e) {
+            console.error(e)
+            return []
+        }
     }}),
     schema: ({image})=> z.object({
         name: z.string(),
