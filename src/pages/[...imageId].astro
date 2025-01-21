@@ -43,13 +43,19 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
                 style=`background-repeat: no-repeat; background-size: 100% 100%; background-image: url(${lowQuality.src})`/>
                 <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch="viewport">
                     <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                        <line x1="0" y1="8" x2="4" y2="0" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
+                        <line x1="4" y1="0" x2="8" y2="8" class="stroke-white/80 stroke-[3]" stroke-linecap="round"></line>
+
                         <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
                         <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round">
                     </svg>
                 </a>
                 {(typeof local.verbindung === "string") ? 
-                    <a href={transitImageUrl} class="absolute top-[50%] right-[50%]" data-astro-prefetch="viewport">
+                    <a href={transitImageUrl} class="absolute top-4 right-[50%]" data-astro-prefetch="viewport">
                         <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                            <line x1="0" y1="8" x2="4" y2="0" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
+                            <line x1="4" y1="0" x2="8" y2="8" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
+
                             <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
                             <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
                         </svg>
@@ -57,6 +63,9 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
                     : undefined}
                 <a href={nextImageUrl} class="absolute top-[50%] right-4 rotate-90" data-astro-prefetch="viewport">
                     <svg viewBox="-2 -2 12 12" class="w-8 h-8">
+                        <line x1="0" y1="8" x2="4" y2="0" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
+                        <line x1="4" y1="0" x2="8" y2="8" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
+
                         <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
                         <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
                     </svg>
