@@ -32,7 +32,7 @@ const rooms = defineCollection({
                     bilder: room.bilder.map(b=>{
                         return {
                             ...b,
-                            image: `./images/${imageCounter++}.png`
+                            image: imageCounter < 96?`./images/${imageCounter++}.png` : `./images/${imageCounter++}.JPG`
                         }
                     })
                 }
