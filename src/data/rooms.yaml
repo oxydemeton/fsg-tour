@@ -379,4 +379,4 @@ bilder:
  verbindung: "-1.113.2/nord"
 - name: "ost"
 - name: "süd"
-#- name: "west"
+- name: "west"
