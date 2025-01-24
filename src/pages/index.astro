@@ -1,5 +1,6 @@
 ---
 import Welcome from '../components/Welcome.astro';
+import Map from "../components/Map.astro";
 import Layout from '../layouts/Layout.astro';
 import { getCollection, getEntry } from 'astro:content';
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -12,6 +13,7 @@ const base = import.meta.env.BASE_URL
 
 <Layout>
 	<h1>FSG Roomtour</h1>
+	<Map/>
 	<h2>Räume:</h2>
 	<ol>
 		{rooms.map(r=><li>
