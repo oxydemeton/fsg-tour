@@ -1,0 +1,66 @@
+---
+interface Props {
+    clockvise: boolean,
+    rotation: "0" | "90" | "180" | "270"
+    pos: {
+        x: number,
+        y: number
+    }
+}
+const {clockvise = true, pos, rotation} = Astro.props
+const p1 = pos
+const p2 = {x: 0, y:0}
+switch (rotation.toString()) {
+    case "0":
+        p2.x = pos.x + 29
+        p2.y = pos.y - 29
+        break;
+    case "90":
+        p2.x = pos.x + 29
+        p2.y = pos.y + 29
+        break;
+    case "180":
+        p2.x = pos.x - 29
+        p2.y = pos.y + 29
+        break;
+    case "270":
+        p2.x = pos.x - 29
+        p2.y = pos.y - 29
+        break;
+    default:
+        break;
+}
+const p3 = {x:0, y:0}
+switch (rotation.toString()) {
+    case "0":
+        p3.x = pos.x
+        p3.y = pos.y - 29
+        break;
+    case "90":
+        p3.x = pos.x + 29
+        p3.y = pos.y
+        break;
+    case "180":
+        p3.x = pos.x
+        p3.y = pos.y - 29
+        break;
+    case "270":
+        p3.x = pos.x - 29
+        p3.y = pos.y
+        break;
+    default:
+        break;
+}
+---
+<path d=`M ${p1.x}, ${p1.y} A  29 29, 0, 0 0, ${p2.x},${p2.y} L ${p3.x} ${p3.y}`/>
+
+<style>
+    line, polyline, path {
+        stroke:black;
+        stroke-width: 6;
+        fill: transparent;
+    }
+    text {
+        font-size: 512;
+    }
+</style>
