@@ -52,7 +52,7 @@ switch (rotation.toString()) {
         break;
 }
 ---
-<path d=`M ${p1.x}, ${p1.y} A  29 29, 0, 0 0, ${p2.x},${p2.y} L ${p3.x} ${p3.y}`/>
+<path d=`M ${p1.x}, ${p1.y} A  29 29, 0, 0 ${clockvise? 0: 1}, ${p2.x},${p2.y} L ${p3.x} ${p3.y}`/>
 
 <style>
     line, polyline, path {

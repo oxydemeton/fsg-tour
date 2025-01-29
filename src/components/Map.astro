@@ -57,23 +57,34 @@ const base = import.meta.env.BASE_URL
                  L  725, 585
                  L  725, 630
                  L  865, 630
-                 L  893, 630
-                 A  29 29, 0, 0 0, 865 600
+                 M  893, 630
                  Z"/>
         <text x="740" y="616" font-size="26" font-weight="500">WC 1.413</text>
     </a>
+    <Door clockvise={true} pos={{x: 865, y: 625 }} rotation="0"/>
+
     <a id="map-1.414" href=`${base}/1.414.2/nord` aria-label="Klassen raum 1.414">
         <path d="M  725, 630
                  L  967, 630
                  L  967, 673
-                 A  29 29, 0, 0 1, 995, 703
                  L  967, 703
-                 L  967, 915
-                 L  725, 915
+                 L  967, 920
+                 L  725, 920
                  Z"/>
         <text x="740" y="760" font-size="26" font-weight="500">
             Klassenraum 1.414
         </text>
+    </a>
+    <Door clockvise={true} pos={{x: 967, y: 703}} rotation="0"/> <!--TODO FIX door directions/flip it -->
+
+    <a href=`${base}/1.415.2/nord` aria-label="Klassenraum 1.415">
+        <path d="M 725 920
+                L   967 920
+                L   967 952
+                L   967 984
+                L   967 1165
+                L   725 1165
+                L 725 920"/>
     </a>
 </svg>
 
