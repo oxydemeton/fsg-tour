@@ -1,0 +1,37 @@
+---
+---
+
+<div class="zoomable-astro w-[90vw]">
+    <div>Zoom:</div>
+    <slot/>
+</div>
+
+
+<script>
+    const divs = document.querySelectorAll("div.zoomable-astro")
+    for (let index = 0; index < divs.length; index++) {
+        const element = divs[index] as HTMLDivElement & {zoomLevel: number};
+        const indicator = element.getElementsByTagName("div")[0]
+        element.zoomLevel = 1.0
+
+        indicator.innerText = `Zoom: ${element.zoomLevel}`
+        
+        element.addEventListener("wheel", (event)=>{
+            event.preventDefault()
+            //@ts-ignore Does not know wheeldata which does exist as an int 
+            const delta = event.wheelDelta as number;
+            if (delta > 0) {
+                element.zoomLevel += .1
+            } else {
+                element.zoomLevel -= .1
+            }
+            if (element.zoomLevel <= 0) {
+                element.zoomLevel = .1
+            }
+            element.zoomLevel = Math.round(element.zoomLevel * 10) / 10
+            indicator.innerText = `Zoom: ${element.zoomLevel}`
+            element.style.zoom = element.zoomLevel.toString()
+            console.log("scroll", element.zoomLevel, event)
+        });
+    }
+</script>
