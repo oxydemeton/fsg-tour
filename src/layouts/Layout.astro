@@ -27,7 +27,7 @@ const isDev = import.meta.env.MODE === "development"
 		{
 			isDev?
 				<meta http-equiv="content-security-policy" content="script-src 'self' 'unsafe-inline'; object-src 'none'; img-src 'self' https://fsggeldern.de/;style-src 'self' 'unsafe-inline';upgrade-insecure-requests;"/>
-				:<meta http-equiv="content-security-policy" content="script-src 'self'; object-src 'none'; img-src 'self' https://fsggeldern.de/;style-src 'self' 'unsafe-inline';upgrade-insecure-requests;"/>
+				:<meta http-equiv="content-security-policy" content="script-src 'self' 'unsafe-inline'; object-src 'none'; img-src 'self' https://fsggeldern.de/;style-src 'self' 'unsafe-inline';upgrade-insecure-requests;"/>
 		}
 		<title>{title || "FSG-Tour"}</title>
 		{
