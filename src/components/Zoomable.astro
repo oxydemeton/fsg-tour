@@ -30,7 +30,7 @@
             }
             element.zoomLevel = Math.round(element.zoomLevel * 10) / 10
             indicator.innerText = `Zoom: ${element.zoomLevel}`
-            element.style.zoom = element.zoomLevel.toString()
+            element.style = `transform: scale(${element.zoomLevel.toString()}); transform-origin: top left; `
             console.log("scroll", element.zoomLevel, event)
         });
     }
