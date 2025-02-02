@@ -42,7 +42,7 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
         <div>
             <div class="relative"}>
                 <Zoomable>
-                    <Picture formats={["avif"]} fallbackFormat="jpeg" quality={50} src={local.image} alt={local.name} width="1824" transition:animate="fade" class="-z-10"
+                    <Picture formats={["avif"]} fallbackFormat="jpeg" quality={50} src={local.image} alt={local.name} width="1824" transition:animate="fade" class="-z-10 w-full h-full"
                     style=`background-repeat: no-repeat; background-size: 100% 100%; background-image: url(${lowQuality.src})`/>
                 </Zoomable>
                 <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch="viewport">
