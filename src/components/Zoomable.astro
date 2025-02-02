@@ -5,7 +5,7 @@
     <button type="button" class="zoomable-astro-dec">-</button>
     <div class="zoomable-astro-indicator inline">Zoom: 100%</div>
     <button type="button" class="zoomable-astro-inc">+</button>
-    <div class="zoomable-astro-inner border-1 border-highlight">
+    <div class="zoomable-astro-inner">
         <slot/>
     </div>
 </div>
@@ -24,6 +24,12 @@
         @media not (prefers-reduced-motion) {
             &>.zoomable-astro-inner {
                 transition: width 150ms ease-in;
+            }
+        }
+        &>.zoomable-astro-inner {
+            border: 1px solid var(--highlight-color);
+            @media (prefers-contrast: more) {
+                border: 3px solid var(--highlight-color);
             }
         }
         &>button {
