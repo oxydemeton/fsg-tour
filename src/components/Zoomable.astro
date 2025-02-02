@@ -2,9 +2,9 @@
 ---
 
 <div class="zoomable-astro max-h-[80svh] w-[90vw] overflow-scroll">
-    <button class="zoomable-astro-dec">-</button>
+    <button type="button" class="zoomable-astro-dec">-</button>
     <div class="zoomable-astro-indicator inline">Zoom: 100%</div>
-    <button class="zoomable-astro-inc">+</button>
+    <button type="button" class="zoomable-astro-inc">+</button>
     <div class="zoomable-astro-inner border-1 border-highlight">
         <slot/>
     </div>
@@ -57,7 +57,7 @@
                         element.zoomLevel = .1
                     }
                     element.zoomLevel = Math.round(element.zoomLevel * 10) / 10
-                    element.style = `width: calc(${element.zoomLevel.toString()} *100%); transform-origin: center center; `
+                    element.style.width = `calc(${element.zoomLevel.toString()} *100%)`
                     const formatter = new Intl.NumberFormat(navigator.language || "de-de", {style: "percent"})
                     indicator.innerText = `Zoom: ${formatter.format(element.zoomLevel)}`
                     
