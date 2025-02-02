@@ -2,9 +2,11 @@
 ---
 
 <div class="zoomable-astro max-h-[80svh] w-[90vw] overflow-scroll">
-    <button type="button" class="zoomable-astro-dec">-</button>
-    <div class="zoomable-astro-indicator inline">Zoom: 100%</div>
-    <button type="button" class="zoomable-astro-inc">+</button>
+    <div>
+        <button type="button" class="zoomable-astro-dec" aria-label="heraus zoomen" role="button">-</button>
+        <span class="zoomable-astro-indicator">Zoom: 100%</span>
+        <button type="button" class="zoomable-astro-inc" aria-label="hinein zoomen" role="button">+</button>
+    </div>
     <div class="zoomable-astro-inner w-full">
         <div class="m-auto">
             <slot/>
