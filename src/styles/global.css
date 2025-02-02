@@ -31,7 +31,7 @@
         }
         @media (prefers-contrast: less) {
             --bg-color: var(--color-zinc-800);
-            --text-color: var(--color-zinc-200);
+            --text-color: var(--color-zinc-300);
             --highlight-color: var(--color-blue-300);
             --highlight-bg-color: var(--color-zinc-600);
         }
