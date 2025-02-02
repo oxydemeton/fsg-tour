@@ -29,12 +29,12 @@
 </style>
 
 
-<script>
-    const divs = document.querySelectorAll("div.zoomable-astro")
+<script >
+    let divs = document.querySelectorAll("div.zoomable-astro")
     const mobile = window.matchMedia("(pointer: fine)")
     let abortController: AbortController | undefined;
 
-    function apply() {
+    function apply() {        
         if (mobile.matches) {
             for (let index = 0; index < divs.length; index++) {
                 const elementParent = divs[index] as HTMLDivElement & {zoomLevel: number};
@@ -92,4 +92,12 @@
         apply()
     }
     apply()
+
+    //Rerun on client navigation
+    document.addEventListener("astro:page-load", ()=>{
+        abortController?.abort()
+        abortController = undefined
+        divs = document.querySelectorAll("div.zoomable-astro")
+        apply()
+    })
 </script>
