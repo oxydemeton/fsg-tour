@@ -93,7 +93,7 @@ const base = import.meta.env.BASE_URL
 
 <style>
     line, polyline, path {
-        stroke:black;
+        stroke: currentColor;
         stroke-width: 12;
         fill: transparent;
         padding: 0;
@@ -105,17 +105,18 @@ const base = import.meta.env.BASE_URL
         z-index: -10;
     }
     a:hover path {
-        fill: lightgray;
+        fill: var(--highlight-bg-color);
         border: none;
     }
     a:focus-visible {
         border: none;
         outline: none;
         path {
-            fill: lightgray;
+            fill: var(--highlight-bg-color);
         }
     }
     text {
         font-size: 512;
+        fill: currentColor;
     }
 </style>
