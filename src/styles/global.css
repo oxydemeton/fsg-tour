@@ -44,3 +44,13 @@
     --color-highlight: var(--highlight-color);
     --color-highlight-bg: var(--highlight-bg-color);
 }
+@media (prefers-contrast: less) {
+    img {
+        filter: contrast(75%);
+    }
+}
+@media (prefers-contrast: more) {
+    img {
+        filter: contrast(120%);
+    }
+}
