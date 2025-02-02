@@ -29,18 +29,21 @@
 </style>
 
 
-<script >
+<script>
     let divs = document.querySelectorAll("div.zoomable-astro")
     const mobile = window.matchMedia("(pointer: fine)")
     let abortController: AbortController | undefined;
 
-    function apply() {        
+    function apply() {
         if (mobile.matches) {
             for (let index = 0; index < divs.length; index++) {
                 const elementParent = divs[index] as HTMLDivElement & {zoomLevel: number};
                 const indicator = elementParent.getElementsByClassName("zoomable-astro-indicator")[0] as HTMLDivElement;
                 const element = elementParent.getElementsByClassName("zoomable-astro-inner")[0] as HTMLDivElement & {zoomLevel: number}
-                element.zoomLevel = 1.0
+                {
+                    const storage = sessionStorage.getItem("zoom") || "0.9"
+                    element.zoomLevel = parseFloat(storage)
+                }
                 updateZoom(0)
                 if (abortController !== undefined) {
                     abortController.abort()
@@ -60,6 +63,8 @@
                     element.style.width = `calc(${element.zoomLevel.toString()} *100%)`
                     const formatter = new Intl.NumberFormat(navigator.language || "de-de", {style: "percent"})
                     indicator.innerText = `Zoom: ${formatter.format(element.zoomLevel)}`
+
+                    sessionStorage.setItem("zoom", element.zoomLevel.toString())
                     
                     console.log("scroll", element.zoomLevel)
                 }
@@ -87,7 +92,7 @@
                 abortController = undefined
             }
         }
-    }    
+    }
     mobile.onchange = ()=> {
         apply()
     }
