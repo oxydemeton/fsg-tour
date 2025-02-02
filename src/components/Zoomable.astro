@@ -21,6 +21,11 @@
                 display: none;
             }
         }
+        @media not (prefers-reduced-motion) {
+            &>.zoomable-astro-inner {
+                transition: width 150ms ease-in;
+            }
+        }
         &>button {
             cursor: pointer;
             padding-inline: 1ch;
