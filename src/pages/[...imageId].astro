@@ -5,6 +5,8 @@ import Layout from '../layouts/Layout.astro';
 import AttachIcon from "../assets/icons/attach.svg";
 import TravelExploreIcon from "../assets/icons/travel_explore.svg";
 import Zoomable from "../components/Zoomable.astro";
+import Arrow from "../components/Arrow.astro";
+
 import { fade } from "astro:transitions";
 
 export async function getStaticPaths() {
@@ -47,33 +49,15 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
                     style=`background-repeat: no-repeat; background-size: 100% 100%; background-image: url(${lowQuality.src})`/>
                 </Zoomable>
                 <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch="viewport" aria-label="Ansicht nach link drehen">
-                    <svg viewBox="-2 -2 12 12" class="w-8 h-8">
-                        <line x1="0" y1="8" x2="4" y2="0" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
-                        <line x1="4" y1="0" x2="8" y2="8" class="stroke-white/80 stroke-[3]" stroke-linecap="round"></line>
-
-                        <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
-                        <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round">
-                    </svg>
+                    <Arrow/>
                 </a>
                 {(typeof local.verbindung === "string") ? 
                     <a href={transitImageUrl} class="absolute top-4 right-[50%]" data-astro-prefetch="viewport" aria-label="Nach vorne gehen">
-                        <svg viewBox="-2 -2 12 12" class="w-8 h-8">
-                            <line x1="0" y1="8" x2="4" y2="0" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
-                            <line x1="4" y1="0" x2="8" y2="8" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
-
-                            <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
-                            <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
-                        </svg>
+                        <Arrow/>
                     </a>
                     : undefined}
                 <a href={nextImageUrl} class="absolute top-[50%] right-4 rotate-90" data-astro-prefetch="viewport" aria-label="Ansicht nach rechts drehen">
-                    <svg viewBox="-2 -2 12 12" class="w-8 h-8">
-                        <line x1="0" y1="8" x2="4" y2="0" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
-                        <line x1="4" y1="0" x2="8" y2="8" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
-
-                        <line x1="0" y1="8" x2="4" y2="0" class="stroke-black stroke-2" stroke-linecap="round"/>
-                        <line x1="4" y1="0" x2="8" y2="8" class="stroke-black stroke-2" stroke-linecap="round"/>
-                    </svg>
+                    <Arrow/>
                 </a>
             </div>
             <a href={originalImage.src} class="w-full hover:italic focus-visible:italic "><Image src={AttachIcon} alt="Attachment/Origin Image Icon" class="inline-block rotate-45 dark:invert"/>Original Bild</a>
