@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { getImage, Image, Picture } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import AttachIcon from "../assets/icons/attach.svg";
+import Zoomable from "../components/Zoomable.astro";
 
 export async function getStaticPaths() {
     const rooms = await getCollection('rooms')
@@ -38,9 +39,11 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
     <h2 class="text-center">Richtung: {local.name}</h2>
     <div class="flex justify-center">
         <div>
-            <div class="relative" style={`width: min(95vw, 95svh*${imageRatio})`}>
-                <Picture formats={["avif"]} fallbackFormat="jpeg" quality={50} src={local.image} alt={local.name} width="1824" transition:animate="fade" class="-z-10"
-                style=`background-repeat: no-repeat; background-size: 100% 100%; background-image: url(${lowQuality.src})`/>
+            <div class="relative"}>
+                <Zoomable>
+                    <Picture formats={["avif"]} fallbackFormat="jpeg" quality={50} src={local.image} alt={local.name} width="1824" transition:animate="fade" class="-z-10"
+                    style=`background-repeat: no-repeat; background-size: 100% 100%; background-image: url(${lowQuality.src})`/>
+                </Zoomable>
                 <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch="viewport">
                     <svg viewBox="-2 -2 12 12" class="w-8 h-8">
                         <line x1="0" y1="8" x2="4" y2="0" class="stroke-white/80 stroke-[3]" stroke-linecap="round"/>
