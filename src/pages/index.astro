@@ -11,15 +11,23 @@ const base = import.meta.env.BASE_URL
 ---
 
 <Layout>
-	<h1>FSG Roomtour</h1>
-	<a href="#list">Zur Liste der Räume</a>
-	<Map/>
-	<h2>Räume:</h2>
-	<table id="list">
-		{rooms.sort().map(r=><tr>
-			<td><a href={`${base}/${r.id}/nord`}>{r.id}</a></td><td><a href={`${base}/${r.id}/nord`}>{r.data.name}</a></td>
-		</tr>)}
-	</table>
+	<header>
+		<h1>FSG Roomtour</h1>
+		<a href="#list">Zur Liste der Räume</a>
+	</header>
+	<section>
+		<h2>Karte</h2>
+		<Map/>
+	</section>
+	<section>
+		<h2>Raumliste:</h2>
+		<table id="list">
+			<tr><th>Raum Nummer</th><th>Raum Name</th></tr>
+			{rooms.sort().map(r=><tr>
+				<td><a href={`${base}/${r.id}/nord`}>{r.id}</a></td><td><a href={`${base}/${r.id}/nord`}>{r.data.name}</a></td>
+			</tr>)}
+		</table>
+	</section>
 </Layout>
 
 <style>
@@ -34,7 +42,8 @@ const base = import.meta.env.BASE_URL
 		height: auto;
 		width: max-content;
 	}
-	td {
-		padding-inline: 1ch;
+	td, th {
+		text-align: start;
+		padding-inline: 1em;
 	}
 </style>
