@@ -5,8 +5,10 @@
     <button type="button" class="zoomable-astro-dec">-</button>
     <div class="zoomable-astro-indicator inline">Zoom: 100%</div>
     <button type="button" class="zoomable-astro-inc">+</button>
-    <div class="zoomable-astro-inner">
-        <slot/>
+    <div class="zoomable-astro-inner w-full">
+        <div class="m-auto">
+            <slot/>
+        </div>
     </div>
 </div>
 
@@ -26,7 +28,7 @@
                 transition: width 150ms ease-in;
             }
         }
-        &>.zoomable-astro-inner {
+        &>.zoomable-astro-inner>div {
             border: 1px solid var(--highlight-color);
             @media (prefers-contrast: more) {
                 border: 3px solid var(--highlight-color);
@@ -50,7 +52,7 @@
             for (let index = 0; index < divs.length; index++) {
                 const elementParent = divs[index] as HTMLDivElement & {zoomLevel: number};
                 const indicator = elementParent.getElementsByClassName("zoomable-astro-indicator")[0] as HTMLDivElement;
-                const element = elementParent.getElementsByClassName("zoomable-astro-inner")[0] as HTMLDivElement & {zoomLevel: number}
+                const element = elementParent.getElementsByClassName("zoomable-astro-inner")[0].getElementsByTagName("div")[0] as HTMLDivElement & {zoomLevel: number}
                 {
                     const storage = sessionStorage.getItem("zoom") || "0.9"
                     element.zoomLevel = parseFloat(storage)
