@@ -24,7 +24,7 @@ const base = import.meta.env.BASE_URL
 		<table id="list">
 			<tr><th>Raum Nummer</th><th>Raum Name</th></tr>
 			{rooms.sort().map(r=><tr>
-				<td><a href={`${base}/${r.id}/nord`}>{r.id}</a></td><td><a href={`${base}/${r.id}/nord`}>{r.data.name}</a></td>
+				<td><a href={`${base}/${r.id}/nord`}>{r.id}</a></td><td>{r.data.name}</td>
 			</tr>)}
 		</table>
 	</section>
@@ -41,6 +41,13 @@ const base = import.meta.env.BASE_URL
 		opacity: 1;
 		height: auto;
 		width: max-content;
+	}
+	a {
+		font-style: italic;
+	}
+	a:hover, a:focus-visible {
+		color: var(--highlight-color);
+		outline: none;
 	}
 	td, th {
 		text-align: start;
