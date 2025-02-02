@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { getImage, Image, Picture } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import AttachIcon from "../assets/icons/attach.svg";
+import TravelExploreIcon from "../assets/icons/travel_explore.svg";
 import Zoomable from "../components/Zoomable.astro";
 
 export async function getStaticPaths() {
@@ -74,7 +75,8 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
                     </svg>
                 </a>
             </div>
-            <a href={originalImage.src} class="w-full hover:italic focus-visible:italic "><Image src={AttachIcon} alt="Attachment Icon" class="inline-block rotate-45"/>Original Bild</a>
+            <a href={originalImage.src} class="w-full hover:italic focus-visible:italic "><Image src={AttachIcon} alt="Attachment/Origin Image Icon" class="inline-block rotate-45 dark:invert"/>Original Bild</a>
+            <a href={`${baseUrl}/`} class="w-full hover:italic focus-visible:italic "><Image src={TravelExploreIcon} alt="Map/Übersicht Icon" class="inline-block dark:invert"/>Zurück zur Übersicht</a>
         </div>
     </div>
 </Layout>
