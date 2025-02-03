@@ -56,3 +56,11 @@
         filter: contrast(120%);
     }
 }
+
+a {
+    font-style: italic;
+}
+a:hover, a:focus-visible {
+    color: var(--highlight-color);
+    outline: none;
+}
