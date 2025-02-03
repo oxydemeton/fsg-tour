@@ -12,18 +12,18 @@ const base = import.meta.env.BASE_URL
                     L  622,585
                     L  865,585
                     L  865,562
-                    M  865, 532
+                    L  865, 532
                     L  865, 490
                     L  882, 490
                     L  882, 411
                     L  865, 411
                     L  865, 348
-                    M  865, 318
+                    L  865, 318
                     Z"/>
             <text x="640" y="379" font-size="26" font-weight="500">
                 <tspan x="640" y="380">Oberer Kunstraum</tspan>
-                <tspan x="640" y="400">(OKU)</tspan>
-                <tspan x="640" y="420">1.411</tspan>
+                <tspan x="640" y="418">(OKU)</tspan>
+                <tspan x="640" y="455">1.411</tspan>
             </text>
         </a>
         <Door clockvise={true} pos={{x: 865, y: 562}} rotation="0"/>
@@ -46,7 +46,7 @@ const base = import.meta.env.BASE_URL
                     L  1021, 411
                     L  1021, 490
                     L  1003, 490
-                    M  974 490
+                    L  974 490
                     L  882 490 
                     L  882 411"/>
             <text x="900" y="455" font-size="26" font-weight="500">
@@ -59,7 +59,6 @@ const base = import.meta.env.BASE_URL
                     L  725, 585
                     L  725, 630
                     L  865, 630
-                    M  893, 630
                     Z"/>
             <text x="740" y="616" font-size="26" font-weight="500">WC 1.413</text>
         </a>
@@ -92,9 +91,12 @@ const base = import.meta.env.BASE_URL
 </Zoomable>
 
 <style>
+    svg {
+        isolation: isolate;
+    }
     line, polyline, path {
         stroke: currentColor;
-        stroke-width: 12;
+        stroke-width: 8;
         fill: transparent;
         padding: 0;
         margin: 0;
@@ -107,6 +109,7 @@ const base = import.meta.env.BASE_URL
     a:hover path {
         fill: var(--highlight-bg-color);
         border: none;
+        stroke-width: 18;
     }
     a:focus-visible {
         border: none;
@@ -114,6 +117,10 @@ const base = import.meta.env.BASE_URL
         path {
             fill: var(--highlight-bg-color);
         }
+        z-index: 10;
+    }
+    a:hover {
+        z-index: 10;
     }
     text {
         font-size: 512;
