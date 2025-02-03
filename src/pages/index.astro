@@ -24,7 +24,7 @@ const base = import.meta.env.BASE_URL
 		<table id="list">
 			<tr><th>Raum Nummer</th><th>Raum Name</th></tr>
 			{rooms.sort().map(r=><tr>
-				<td><a href={`${base}/${r.id}/nord`} aria-labelledby=`${r.id}-name`>{r.id}</a></td><td id=`${r.id}-name`>{r.data.name}</td>
+				<td><a href={`${base}/${r.id}/nord`} aria-labelledby={`${r.id}-name`}>{r.id}</a></td><td id={`${r.id}-name`}>{r.data.name}</td>
 			</tr>)}
 		</table>
 	</section>
