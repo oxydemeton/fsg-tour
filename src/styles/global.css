@@ -6,12 +6,14 @@
     --text-color: var(--color-black);
     --highlight-color: var(--color-blue-700);
     --highlight-bg-color: var(--color-zinc-200);
+    --contrast-color: var(--highlight-color);
     @media (prefers-contrast: more) {
         --bg-color: var(--color-white);
         --text-color: ar(--color-black);
         color-scheme: dark;
         --highlight-color: var(--color-sky-600);
         --highlight-bg-color: var(--color-zinc-300);
+        --contrast-color: var(--color-rose-600);
     }
     @media (prefers-contrast: less) {
         --bg-color: var(--color-zinc-100);
@@ -30,6 +32,7 @@
             --highlight-color: var(--color-sky-500);
             --highlight-bg-color: var(--color-zinc-600);
             color-scheme: light;
+            --contrast-color: var(--color-rose-500);
         }
         @media (prefers-contrast: less) {
             --bg-color: var(--color-zinc-800);
@@ -46,6 +49,7 @@
     --color-highlight: var(--highlight-color);
     --color-highlight-bg: var(--highlight-bg-color);
 }
+
 @media (prefers-contrast: less) {
     img {
         filter: contrast(75%);
@@ -61,6 +65,6 @@ a {
     font-style: italic;
 }
 a:hover, a:focus-visible {
-    color: var(--highlight-color);
+    color: var(--contrast-color);
     outline: none;
 }

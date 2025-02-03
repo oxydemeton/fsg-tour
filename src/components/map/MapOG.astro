@@ -148,7 +148,7 @@ const base = import.meta.env.BASE_URL
         isolation: isolate;
     }
     line, polyline, path, rect {
-        stroke: currentColor;
+        stroke: var(--highlight-color);
         @media not (prefers-reduced-transparency) {
             opacity: .8/*lightly transparent strokes so when the one in focus or hovered can shine through*/
         }
