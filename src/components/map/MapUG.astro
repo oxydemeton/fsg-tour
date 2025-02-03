@@ -13,22 +13,26 @@ const base = import.meta.env.BASE_URL
     svg {
         isolation: isolate;
     }
-    line, polyline, path {
-        stroke: currentColor;
+    line, polyline, path, rect {
+        stroke: var(--highlight-color);
+        @media not (prefers-reduced-transparency) {
+            opacity: .8/*lightly transparent strokes so when the one in focus or hovered can shine through*/
+        }
         stroke-width: 8;
         fill: transparent;
         padding: 0;
         margin: 0;
+        stroke-linecap: square;
     }
     a {
         padding: 0;
         margin: 0;
         z-index: -10;
     }
-    a:hover path {
+    a:hover :is(path, line, rect) {
         fill: var(--highlight-bg-color);
         border: none;
-        stroke-width: 18;
+        stroke-width: 14;
     }
     a:focus-visible {
         border: none;
@@ -42,7 +46,23 @@ const base = import.meta.env.BASE_URL
         z-index: 10;
     }
     text {
-        font-size: 512;
         fill: currentColor;
+    }
+    .map-treppe rect {
+        fill: none;
+        stroke-width: 3;
+        @media (prefers-contrast: more) {
+            stroke-width: 5;
+        }
+    }
+    .map-treppe line {
+        stroke-width: 2;
+        @media not (prefers-reduced-transparency) {
+            opacity: .5;
+        }
+        @media (prefers-contrast: more) {
+            stroke-width: 3;
+            opacity: 1;
+        }
     }
 </style>
