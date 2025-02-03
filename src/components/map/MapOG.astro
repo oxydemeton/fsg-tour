@@ -31,12 +31,7 @@ const base = import.meta.env.BASE_URL
         
         <!--OKU Nebenraum-->
         <a id="map-1.412" href={`${base}/1.412/nord`} aria-label="OKU Nebenraum">
-            <path d="M  865, 317
-                    L  865, 260
-                    L  1021, 260
-                    L  1021, 411
-                    L  865,411
-                    Z"/>
+            <rect x="865" y="260" width="156" height="151"/>
             <text x="898" y="330" font-size="24" font-weight="500">
                 <tspan x="898" y="330">Nebenraum</tspan>
                 <tspan x="905" y="360">1.412</tspan>
@@ -47,13 +42,7 @@ const base = import.meta.env.BASE_URL
 
         <!--Putzmittelraum neben OKU-->
         <a id="map-1.410" href=`${base}/1.410/nord` aria-label="Putzmittelraum">
-            <path d="M  882 411
-                    L  1021, 411
-                    L  1021, 490
-                    L  1003, 490
-                    L  974 490
-                    L  882 490 
-                    L  882 411"/>
+            <rect x="882" y="411" width="139" height="79"/>
             <text x="900" y="455" font-size="26" font-weight="500">
                 PM 1.410
             </text>
@@ -62,12 +51,7 @@ const base = import.meta.env.BASE_URL
 
         <!--Treppe Notuasgang beim OKU und Forum 1 -->
         <a href=`${base}/1.409.1/nord` aria-label="Treppe Notuasgang beim OKU und Forum 1">
-            <path d="M  1021 260,
-                    L   1143 260,
-                    L   1143 490,
-                    L   1021 490
-                    L   1021 260
-                "/>
+            <rect x="1021" y="260" width="122" height="230"/>
             <!--Treppe-->
             <g class="map-treppe">
                 <rect x="1023" y="312" width="55" height="106"/>
@@ -78,8 +62,8 @@ const base = import.meta.env.BASE_URL
                 <line x1="1023" y1="366" x2="1078" y2="366"/>
                 <line x1="1023" y1="377" x2="1078" y2="377"/>
                 <line x1="1023" y1="388" x2="1078" y2="388"/>
-                <line x1="1023" y1="399" x2="1078" y2="398"/>
-                <line x1="1023" y1="410" x2="1078" y2="408"/>
+                <line x1="1023" y1="398" x2="1078" y2="398"/>
+                <line x1="1023" y1="408" x2="1078" y2="408"/>
 
                 <rect x="1085" y="312" width="55" height="106"/>
                 <line x1="1085" y1="322" x2="1140" y2="322"/>
@@ -89,39 +73,27 @@ const base = import.meta.env.BASE_URL
                 <line x1="1085" y1="366" x2="1140" y2="366"/>
                 <line x1="1085" y1="377" x2="1140" y2="377"/>
                 <line x1="1085" y1="388" x2="1140" y2="388"/>
-                <line x1="1085" y1="399" x2="1140" y2="398"/>
-                <line x1="1085" y1="410" x2="1140" y2="408"/>
+                <line x1="1085" y1="398" x2="1140" y2="398"/>
+                <line x1="1085" y1="408" x2="1140" y2="408"/>
             </g>
         </a>
         <Door clockvise={true} pos={{x: 1084, y: 490}} rotation="270"/><!--TODO Fix door rotation/flip horizontal -->
         <Door clockvise={true} pos={{x: 1118, y: 490}} rotation="270"/>
 
         <a id="map-1.408a" href=`${base}/1.408a.1/nord` aria-label="Forum 1 Bühne">
-            <path d="M  1021 260
-                    L   1143
-            
-                "/>
+            <!--Fill -->
+            <rect x=""/>
         </a>
 
         <!--WC neben OKU-->
         <a id="map-1.413" href=`${base}/1.413/nord` aria-label="WC neben OKU">
-            <path d="M  865, 585
-                    L  725, 585
-                    L  725, 630
-                    L  865, 630
-                    Z"/>
+            <rect x="725" y="585" width="140" height="45"/>
             <text x="740" y="616" font-size="26" font-weight="500">WC 1.413</text>
         </a>
         <Door clockvise={true} pos={{x: 865, y: 625 }} rotation="0"/>
 
         <a id="map-1.414" href=`${base}/1.414.2/nord` aria-label="Klassen raum 1.414">
-            <path d="M  725, 630
-                    L  967, 630
-                    L  967, 673
-                    L  967, 703
-                    L  967, 920
-                    L  725, 920
-                    Z"/>
+            <rect x="725" y="630" width="242" height="290"/>
             <text x="740" y="760" font-size="26" font-weight="500">
                 Klassenraum 1.414
             </text>
@@ -129,13 +101,7 @@ const base = import.meta.env.BASE_URL
         <Door clockvise={true} pos={{x: 967, y: 703}} rotation="0"/> <!--TODO FIX door directions/flip it -->
 
         <a href=`${base}/1.415.2/nord` aria-label="Klassenraum 1.415">
-            <path d="M 725 920
-                    L   967 920
-                    L   967 952
-                    L   967 984
-                    L   967 1165
-                    L   725 1165
-                    L 725 920"/>
+            <rect x="725" y="920" width="242" height="245"/>
         </a>
     </svg>
 </Zoomable>
@@ -144,7 +110,7 @@ const base = import.meta.env.BASE_URL
     svg {
         isolation: isolate;
     }
-    line, polyline, path,rect {
+    line, polyline, path, rect {
         stroke: currentColor;
         stroke-width: 8;
         fill: transparent;
