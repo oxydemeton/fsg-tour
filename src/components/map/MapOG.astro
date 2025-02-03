@@ -118,14 +118,28 @@ const base = import.meta.env.BASE_URL
         <a id="map-1.414" href=`${base}/1.414.2/nord` aria-label="Klassen raum 1.414">
             <rect x="725" y="630" width="242" height="290"/>
             <text x="740" y="760" font-size="26" font-weight="500">
-                Klassenraum 1.414
+                Klassenraum&nbsp;&nbsp;1.414
             </text>
         </a>
         <Door clockvise={true} pos={{x: 967, y: 703}} rotation="0"/> <!--TODO FIX door directions/flip it -->
 
-        <a href=`${base}/1.415.2/nord` aria-label="Klassenraum 1.415">
+        <!--Ifr 1 -->
+        <a href=`${base}/1.415.1/nord` aria-label="Informatik 1">
             <rect x="725" y="920" width="242" height="245"/>
+            <text x="740" y="1020" font-size="26" font-weight="500">
+                Informatik 1&nbsp;&nbsp;1.415
+            </text>
         </a>
+        <Door pos={{x:967, y: 983}} rotation="0"/><!--TODO FIX door directions/flip it -->
+
+        <!--Ifr2 -->
+        <a href=`${base}/1.416.1/nord` aria-label="Informatik 2">
+            <rect x="725" y="1165" width="242" height="325"/>
+            <text x="740" y="1300" font-size="26" font-weight="500">
+                Informatik 2&nbsp;&nbsp;1.416
+            </text>
+        </a>
+        <Door pos={{x:967, y: 1234}} rotation="0"/><!--TODO FIX door directions/flip it -->
     </svg>
 </Zoomable>
 
@@ -166,7 +180,6 @@ const base = import.meta.env.BASE_URL
         z-index: 10;
     }
     text {
-        font-size: 512;
         fill: currentColor;
     }
     .map-treppe rect {
