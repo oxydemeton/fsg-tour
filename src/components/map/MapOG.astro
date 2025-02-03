@@ -148,7 +148,7 @@ const base = import.meta.env.BASE_URL
         isolation: isolate;
     }
     line, polyline, path, rect {
-        stroke: var(--highlight-color);
+        stroke: currentColor;
         @media not (prefers-reduced-transparency) {
             opacity: .8/*lightly transparent strokes so when the one in focus or hovered can shine through*/
         }
@@ -165,6 +165,7 @@ const base = import.meta.env.BASE_URL
     }
     a:hover :where(path, line, rect) {
         fill: var(--highlight-bg-color);
+        stroke: var(--highlight-color);
         border: none;
         stroke-width: 14;
     }
