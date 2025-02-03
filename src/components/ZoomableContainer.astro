@@ -2,7 +2,7 @@
 ---
 
 <div class="zoomable-astro w-[90vw] overflow-scroll">
-    <div>
+    <div class="zoomable-astro-indicator-group">
         <button type="button" class="zoomable-astro-dec" aria-label="heraus zoomen" role="button">-</button>
         <span class="zoomable-astro-indicator">Zoom: 100%</span>
         <button type="button" class="zoomable-astro-inc" aria-label="hinein zoomen" role="button">+</button>
@@ -25,7 +25,7 @@
                 max-width: 100% !important;
                 max-height: 100% !important;
             }
-            .zoomable-astro-indicator, &>button {
+            &>.zoomable-astro-indicator-group {
                 display: none;
             }
             height: auto;
