@@ -1,9 +1,14 @@
 ---
-import Map from "../../components/Map.astro";
+import Map from "../../components/map/MapEG.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout>
     <h2 class="text-lg font-bold">Karte</h2>
+    <nav>
+        <a href="/">Zur Raumliste</a>
+        <a href="/map/ug">Untergeschoss</a>
+        <a href="/map/ug">Obergeschoss</a>
+    </nav>
 	<Map/>
 </Layout>
