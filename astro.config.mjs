@@ -14,5 +14,12 @@ export default defineConfig({
   cacheDir: "./buildCache",
   vite: {
     plugins: [tailwindcss()],
+      build: {
+        reportCompressedSize: true, //Set to false to improve build speed
+        minify: "terser",
+      }
   },
+  build: {
+    concurrency: 1, //Increase to improve build performance with risk of breaking things
+  }
 });
