@@ -1,0 +1,16 @@
+---
+import Map from "../../components/map/MapUG.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const base = import.meta.env.BASE_URL
+---
+
+<Layout>
+    <h2 class="text-lg font-bold">Karte Untergeschoss</h2>
+    <nav class="flex justify-evenly max-w-[120ch] m-auto">
+        <a href={`${base}`}>Zur Raumliste</a>
+        <a href={`${base}/map/eg`}>Zum Erdgeschoss</a>
+        <a href=`${base}/map/og`>Zum Obergeschoss</a>
+    </nav>
+	<Map/>
+</Layout>
