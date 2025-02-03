@@ -80,7 +80,7 @@ const base = import.meta.env.BASE_URL
         <Door clockvise={true} pos={{x: 1084, y: 490}} rotation="270"/><!--TODO Fix door rotation/flip horizontal -->
         <Door clockvise={true} pos={{x: 1118, y: 490}} rotation="270"/>
 
-        <a id="map-1.408a" href=`${base}/1.408a.1/nord` aria-label="Forum 1 Bühne">
+        <a id="map-1.408a" href=`${base}/1.408a.1/ost` aria-label="Forum 1 Bühne">
             <!--Fill/clickable area -->
             <rect x="1143" y="260" width="149" height="230" style="stroke: none;"/>
             <line x1="1143" y1="260" x2="1288" y2="260"/>
@@ -93,6 +93,20 @@ const base = import.meta.env.BASE_URL
             </text>
         </a>
         <Door pos={{x:1174, y:490}} rotation="90"/><!--TODO Fix door rotation/flip -->
+
+        <!--Forum 1-->
+        <a href="/1.408.4/west" aria-label="Forum 1">
+            <!--Fill/clickable area -->
+            <rect x="1288" y="182" width="467" height="308" style="stroke: none;"/>
+            <line x1="1288" y1="182" x2="1755" y2="182"/>
+            <line x1="1755" y1="182" x2="1755" y2="490"/>
+            <line x1="1755" y1="490" x2="1292" y2="490"/>
+            <line x1="1292" y1="260" x2="1292" y2="490" style="stroke-dasharray: 8,24; stroke-width: 4;"/> <!--Schmale dashed line zwischen Bühne und Forum -->
+            <line x1="1288" y1="260" x2="1288" y2="182"/>
+            <text x="1430" y="350" font-size="26" font-weight="500">
+                Forum 1&nbsp;&nbsp;1.408
+            </text>
+        </a>
 
         <!--WC neben OKU-->
         <a id="map-1.413" href=`${base}/1.413/nord` aria-label="WC neben OKU">
