@@ -81,9 +81,18 @@ const base = import.meta.env.BASE_URL
         <Door clockvise={true} pos={{x: 1118, y: 490}} rotation="270"/>
 
         <a id="map-1.408a" href=`${base}/1.408a.1/nord` aria-label="Forum 1 Bühne">
-            <!--Fill -->
-            <rect x=""/>
+            <!--Fill/clickable area -->
+            <rect x="1143" y="260" width="149" height="230" style="stroke: none;"/>
+            <line x1="1143" y1="260" x2="1288" y2="260"/>
+            <line x1="1292" y1="260" x2="1292" y2="490" style="stroke-dasharray: 8,24; stroke-width: 4;"/> <!--Schmale dashed line zwischen Bühne und Forum -->
+            <line x1="1288" y1="490" x2="1143" y2="490"/>
+            <line x1="1143" y1="490" x2="1143" y2="260"/>
+            <text x="1170" y="330" font-size="26" font-weight="500">
+                <tspan>Bühne</tspan>
+                <tspan x="1170" y="370">1.408a</tspan>
+            </text>
         </a>
+        <Door pos={{x:1174, y:490}} rotation="90"/><!--TODO Fix door rotation/flip -->
 
         <!--WC neben OKU-->
         <a id="map-1.413" href=`${base}/1.413/nord` aria-label="WC neben OKU">
@@ -112,17 +121,21 @@ const base = import.meta.env.BASE_URL
     }
     line, polyline, path, rect {
         stroke: currentColor;
+        @media not (prefers-reduced-transparency) {
+            opacity: .8/*lightly transparent strokes so when the one in focus or hovered can shine through*/
+        }
         stroke-width: 8;
         fill: transparent;
         padding: 0;
         margin: 0;
+        stroke-linecap: square;
     }
     a {
         padding: 0;
         margin: 0;
         z-index: -10;
     }
-    a:hover :is(path) {
+    a:hover :is(path, line, rect) {
         fill: var(--highlight-bg-color);
         border: none;
         stroke-width: 14;
