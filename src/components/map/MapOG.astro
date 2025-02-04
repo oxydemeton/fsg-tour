@@ -5,6 +5,7 @@ const base = import.meta.env.BASE_URL
 ---
 <Zoomable>
     <svg viewBox="0 0 4367 3087">
+        <!--Linker Flur -->
         <!--OKU -->
         <a href={`${base}/1.411.1/nord`} id="map-1.411" aria-label="Oberer Kunstraum OKU">
             <path d="M  865,316
@@ -235,6 +236,18 @@ const base = import.meta.env.BASE_URL
         </a>
         <Door pos={{x:1056, y:1978}} rotation="90"/><!--TODO Fix direction/flip -->
         <Door pos={{x:1085, y:1978}} rotation="90"/>
+
+
+
+        <!--Mittlerer Flur -->
+        <a href=`${base}/1.307.1/nord` aria-label="Klassenraum 1.307">
+            <rect x="2044" y="502" width="214" height="305"/>
+            <text x="2056" y="620" font-size="26" font-weight="500">
+                <tspan>Klassenraum</tspan>
+                <tspan x="2056" y="650">1.407</tspan>
+            </text>
+        </a>
+        <Door pos={{x: 2258, y: 755}} rotation="0"/>
     </svg>
 </Zoomable>
 
