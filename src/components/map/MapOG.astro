@@ -107,6 +107,8 @@ const base = import.meta.env.BASE_URL
                 Forum 1&nbsp;&nbsp;1.408
             </text>
         </a>
+        <Door pos={{x:1303, y:490}} rotation="90"/><!--TODO Fix door rotation/flip -->
+        <Door pos={{x:1330, y:490}} rotation="90"/><!--TODO Fix door rotation/flip -->
 
         <!--WC neben OKU-->
         <a id="map-1.413" href=`${base}/1.413/nord` aria-label="WC neben OKU">
@@ -115,6 +117,24 @@ const base = import.meta.env.BASE_URL
         </a>
         <Door clockvise={true} pos={{x: 865, y: 625 }} rotation="0"/>
 
+        <!--Flur Links -->
+        <a href="/1.402.5/nord">
+            <path d="M  865,  490
+                    L   1369, 490
+                    L   1369, 630
+                    L   1131, 630
+                    L   1131, 1984
+                    L   1041, 1984
+                    L   1041, 1490
+                    L   967,  1490
+                    L   967,  630
+                    L   865,  630
+                    L   865,  490"/>
+            <text x="960" y="560" font-size="26" font-weight="500">
+                Flur Oben Links 1.402
+            </text>
+        </a>
+
         <a id="map-1.414" href=`${base}/1.414.2/nord` aria-label="Klassen raum 1.414">
             <rect x="725" y="630" width="242" height="290"/>
             <text x="740" y="760" font-size="26" font-weight="500">
@@ -122,6 +142,16 @@ const base = import.meta.env.BASE_URL
             </text>
         </a>
         <Door clockvise={true} pos={{x: 967, y: 703}} rotation="0"/> <!--TODO FIX door directions/flip it -->
+
+        <!--Orchesterraum -->
+        <a href=`${base}/1.407.1/nord` aria-label="Orchesterraum">
+            <rect x="1131" y="630" width="242" height="294"/>
+            <text x="1150" y="760" font-size="26" font-weight="500">
+                <tspan>Orchesterraum</tspan>
+                <tspan x="1150" y="790">1.407</tspan>
+            </text>
+        </a>
+        <Door pos={{x: 1131, y: 855}} rotation="180" clockvise={false}/> <!--TODO fix door directions/flip it -->
 
         <!--Ifr 1 -->
         <a href=`${base}/1.415.1/nord` aria-label="Informatik 1">
@@ -132,6 +162,15 @@ const base = import.meta.env.BASE_URL
         </a>
         <Door pos={{x:967, y: 983}} rotation="0"/><!--TODO FIX door directions/flip it -->
 
+        <a href=`${base}/1.406.1/nord` aria-label="Klassenraum 1.406">
+            <rect x="1131" y="924" width="242" height="290"/>
+            <text x="1150" y="1054" font-size="26" font-weight="500">
+                <tspan>Klassenraum</tspan>
+                <tspan x="1150" y="1084">1.406</tspan>
+            </text>
+        </a>
+        <Door pos={{x: 1131, y: 1144}} rotation="180" clockvise={false}/> <!--TODO fix door directions/flip it -->
+
         <!--Ifr2 -->
         <a href=`${base}/1.416.1/nord` aria-label="Informatik 2">
             <rect x="725" y="1165" width="242" height="325"/>
@@ -140,6 +179,62 @@ const base = import.meta.env.BASE_URL
             </text>
         </a>
         <Door pos={{x:967, y: 1234}} rotation="0"/><!--TODO FIX door directions/flip it -->
+
+        <a href=`${base}/1.405.1/nord` aria-label="Klassenraum 1.405">
+            <rect x="1131" y="1213" width="242" height="257"/>
+            <text x="1150" y="1344" font-size="26" font-weight="500">
+                <tspan>Klassenraum</tspan>
+                <tspan x="1150" y="1374">1.405</tspan>
+            </text>
+        </a>
+        <Door pos={{x: 1131, y: 1430}} rotation="180" clockvise={false}/> <!--TODO fix door directions/flip it -->
+
+        <a href=`${base}/1.404.1/nord` aria-label="Klassenraum 1.404">
+            <rect x="1131" y="1470" width="242" height="257"/>
+            <text x="1150" y="1604" font-size="26" font-weight="500">
+                <tspan>Klassenraum</tspan>
+                <tspan x="1150" y="1634">1.404</tspan>
+            </text>
+        </a>
+        <Door pos={{x: 1131, y: 1680}} rotation="180" clockvise={false}/> <!--TODO fix door directions/flip it -->
+
+        <a href=`${base}/1.403.1/nord` aria-label="Klassenraum 1.403">
+            <rect x="1131" y="1727" width="242" height="257"/>
+            <text x="1150" y="1861" font-size="26" font-weight="500">
+                <tspan>Klassenraum</tspan>
+                <tspan x="1150" y="1891">1.403</tspan>
+            </text>
+        </a>
+        <Door pos={{x: 1131, y: 1940}} rotation="180" clockvise={false}/> <!--TODO fix door directions/flip it -->
+
+        <a href="1.401.1/nord" aria-label="Treppe in den oberen linken Gang">
+            <rect x="1041" y="1984" width="332" height="101"/>
+            <g class="map-treppe">
+                <rect x="1136" y="1986" width="235" height="77"/>
+                <line x1="1147" y1="1986" x2="1147" y2="2063"/>
+                <line x1="1158" y1="1986" x2="1158" y2="2063"/>
+                <line x1="1169" y1="1986" x2="1169" y2="2063"/>
+                <line x1="1181" y1="1986" x2="1181" y2="2063"/>
+                <line x1="1193" y1="1986" x2="1193" y2="2063"/>
+                <line x1="1204" y1="1986" x2="1204" y2="2063"/>
+                <line x1="1216" y1="1986" x2="1216" y2="2063"/>
+                <line x1="1227" y1="1986" x2="1227" y2="2063"/>
+                <line x1="1238" y1="1986" x2="1238" y2="2063"/>
+                <line x1="1249" y1="1986" x2="1249" y2="2063"/>
+                <line x1="1260" y1="1986" x2="1260" y2="2063"/>
+                <line x1="1271" y1="1986" x2="1271" y2="2063"/>
+                <line x1="1283" y1="1986" x2="1283" y2="2063"/>
+                <line x1="1294" y1="1986" x2="1294" y2="2063"/>
+                <line x1="1304" y1="1986" x2="1304" y2="2063"/>
+                <line x1="1316" y1="1986" x2="1316" y2="2063"/>
+                <line x1="1327" y1="1986" x2="1327" y2="2063"/>
+                <line x1="1339" y1="1986" x2="1339" y2="2063"/>
+                <line x1="1350" y1="1986" x2="1350" y2="2063"/>
+                <line x1="1361" y1="1986" x2="1361" y2="2063"/>
+            </g>
+        </a>
+        <Door pos={{x:1056, y:1978}} rotation="90"/><!--TODO Fix direction/flip -->
+        <Door pos={{x:1085, y:1978}} rotation="90"/>
     </svg>
 </Zoomable>
 
@@ -150,7 +245,7 @@ const base = import.meta.env.BASE_URL
     line, polyline, path, rect {
         stroke: currentColor;
         @media not (prefers-reduced-transparency) {
-            opacity: .8/*lightly transparent strokes so when the one in focus or hovered can shine through*/
+            opacity: 0.8;/*lightly transparent strokes so when the one in focus or hovered can shine through*/
         }
         stroke-width: 8;
         fill: transparent;
