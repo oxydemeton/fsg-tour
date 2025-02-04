@@ -43,7 +43,7 @@ bilder:
  verbindung: "1.411.2/west"
 ---
 
-name: "oberer Putzraum"
+name: "Oberer Putzraum"
 nummer: "1.410"
 bilder:
 - name: "nord"
@@ -120,7 +120,7 @@ bilder:
   - name: "west"
 ---
 
-name: "Oberer Flur Links"
+name: "Oberer Flur links"
 nummer: "1.402.3"
 bilder:
   - name: "nord"
@@ -155,7 +155,7 @@ bilder:
   - name: "west"
 ---
 
-name: "Oberer Flur Links"
+name: "Oberer Flur links"
 nummer: "1.402.4"
 bilder:
   - name: "nord"
@@ -364,7 +364,6 @@ bilder:
 name: "Kellerraum" 
 nummer: "-1.113.2"
 bilder:
-- name: "nord"
 - name: "ost"
 - name: "süd"
  verbindung: "-1.113.3/süd"
@@ -377,6 +376,422 @@ nummer: "-1.113.3"
 bilder:
 - name: "nord"
  verbindung: "-1.113.2/nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+---
+
+name: "Kellerraum"
+nummer: "-1.113.2"
+bilder:
+- name: "nord"
+---
+
+name: "SelbstLernZentrum"
+nummer: "-1.111.1"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.111.2/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-0.4/west"
+---
+
+name: "SelbstLernZentrum"
+nummer: "-1.111.2"
+bilder: 
+- name: "nord"
+ verbindung: "-1.111.3/nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.111.1/west"
+---
+
+name: "SelbstLernZentrum"
+nummer: "-1.111.3"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.111.2/süd"
+- name: "west"
+ verbindung: "-1.111.4/west"
+---
+
+name: "SelbstLernZentrum"
+nummer: "-1.111.4"
+bilder: 
+- name: "nord"
+ verbindung: "-1.111.5/nord"
+- name: "ost"
+ verbindung: "-1.111.3/ost"
+- name: "süd"
+ verbindung: "-1.111.1/süd-west"    
+- name: "west"
+---
+
+name: "Werkraum"
+nummer: "-1.108.1"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-0.2/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.108.2/west"
+---
+
+name: "Werkraum"
+nummer: "-1.108.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.108.1/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.108.3/west"
+---
+
+name: "Werkraum"
+nummer: "-1.108.3"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.108.2/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.108.4/west"
+---
+
+name: "Treppe Fahrradkeller"
+nummer: "-3.1" 
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.105.1/ost"
+- name: "süd"
+- name: "west"
+---
+
+name: "Fahrradkeller"
+nummer: "-1.105.6"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.105.5/west"
+---
+
+name: "Fahrradkeller"
+nummer: "-1.105.5"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.105.6/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.105.4/west"
+---
+
+name: "Flur Sprachlabor"
+nummer: "-1.502.1"
+bilder: 
+- name: "nord"
+ verbindung: "-1.501.1/nord"
+- name: "ost"
+ verbindung: "-1.502.2/ost"
+- name: "süd"
+ verbindung: "-1.502.3/süd"
+- name: "west"
+ verbindung: "-1.502.5/west"
+---
+
+name: "Flur Sprachlabor" 
+nummer: "-1.502.2" 
+bilder: 
+- name: "nord"
+ verbindung: "-1.505.1/nord"
+- name: "ost"
+ verbindung: "-1.503.3/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.502.1"
+ verbindung: "-1.502.3"
+---
+
+name: "Flur Sprachlabor"
+nummer: "-1.502.3"
+bilder: 
+- name: "nord"
+ verbindung: "-1.502.1/nord"
+- name: "ost"
+ verbindung: "-1.502.2/ost"
+- name: "süd"
+- name: "west"
+ verbindng: "-1.502.4/west"
+---
+
+name: "Flur Sprachlabor"
+nummer: "-1.502.4"
+bilder: 
+- name: "nord"
+ verbindung: "-1.502.5/nord"
+- name: "ost"
+ verbindung: "-1.502.3/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.510/west"
+---
+
+name: "Flur Sprachlabor"
+nummer: "-1.502.5"
+bilder: 
+- name: "nord"
+ verbindung: "-1.507/nord"
+- name: "ost"
+ verbindung: "-1.502.1/ost"
+- name: "süd"
+ verbindung: "-1.502.4/süd"
+- name: "west"
+ verbindung: "-1.508.3/west"
+---
+
+name: "WC Sprachlabor"
+nummer: "-1.510"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.502.4/ost"
+- name: "süd"
+- name: "west"
+---
+
+name: "Kunstraum Keller"
+nummer: "-1.508.3"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.502.5/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.508.2/west"
+---
+
+name: "Kunstraum Keller"
+nummer: "-1.508.2"
+bilder: 
+- name: "nord"
+ verbindung: "-1.508.1/nord"
+- name: "ost"
+ verbindung: "-1.508.3/ost"
+- name: "süd"
+- name: "west"
+---
+
+name: "Kunstraum Keller"
+nummer: "-1.508.1"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.509.1/ost"
+- name: "süd"
+ verbindung: "-1.508.2/süd"
+- name: "west"
+---
+
+name: "Nebenraum Keller"
+nummer: "-1.509.1"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.509.2/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.508.1/west"
+---
+
+name: "Nebenraum Keller"
+nummer: "-1.509.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.509.1/west"
+---
+
+name: "Pumpensumpf"
+nummer: "-1.507.1"
+bilder: 
+- name: "nord"
+ verbindung: "-1.507.2/nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.502.5/süd"
+- name: "west"
+---
+
+name: "Pumpensumpf"
+nummer: "-1.507.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.507.1/süd"
+- name: "west"
+---
+
+name: "Sprachlabor"
+nummer: "-1.505.1"
+bilder: 
+- name: "nord"
+ verbindung: "-1.505.2/nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.502.2/süd"
+- name: "west"
+---
+
+name: "Sprachlabor"
+nummer: "-1.505.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.505.3/ost"
+- name: "süd"
+ verbindung: "-1.505.1/süd"
+- name: "west"
+---
+
+name: "Sprachlabor" 
+nummer: "-1.505.3"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.506.1/ost"
+- name: "süd"
+ verbindung: "-1.503.1/süd"
+- name: "west"
+ verbindung: "-1.505.2/west"
+---
+
+name: "Sprachlabor Vorraum"
+nummer: "-1.503.1"
+bilder: 
+- name: "nord"
+ verbindung: "-1.505.3/nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.503.2/süd"
+- name: "west"
+---
+
+name: "Sprachlabor Vorraum" 
+nummer: "-1.503.2"
+bilder: 
+- name: "nord"
+ verbindung: "-1.503.1/nord"
+- name: "ost"
+ verbindung: "-1.504.1/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.503.3/west"
+---
+
+name: "Sprachlabor Vorraum"
+nummer: "-1.503.3"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.503.2/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.502.2/west"
+---
+
+name: "Lehrerwerkraum"
+nummer: "-1.504.1"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.503.2/west"
+---
+
+name: "Archiv Sprachlabor" 
+nummer: "-1.506.1"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.506.2/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.505.3/west"
+---
+
+name: "Archiv Sprachlabor"
+nummer: "-1.506.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.506.1/west"
+---
+
+name: "Treppe Kunstraum UG"
+nummer: "-1.501.1" 
+bilder: 
+- name: "nord"
+ verbindung: "-1.506.2/nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.502.1/süd"
+- name: "west"
+---
+
+name: "Treppe Kunstraum UG" 
+nummer: "-1.501.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.501.1/süd"
+- name: "west"
+ verbindung: "-1.501.3/west"
+---
+
+name: "Treppe Kunstraum UG"
+nummer: "-1.501.3"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.501.2/ost"
+- name: "süd"
+ verbindung: "0.411.1/süd"
+- name: "west"
+---
+
+name: "Treppe Kunstraum EG"
+nummer: "0.411.1"
+bilder: 
+- name: "nord"
+ verbindung: "-1.501.3/nord"
+- name: "ost"
+ verbindung: "0.411.2/ost"
+- name: "süd"
+ verbindung: ""
+- name: "west"
+---
+
+name: 
+nummer: 
+bilder: 
+- name: "nord"
 - name: "ost"
 - name: "süd"
 - name: "west"
