@@ -1,25 +1,4 @@
 name: "Oberer Kunstraum"
-nummer: "1.411.1"
-bilder:
-  - name: "nord"
-  - name: "ost"
-    verbindung: "1.412/ost"
-  - name: "süd"
-    verbindung: "1.411.2/süd" 
-  - name: "west"
-
----
-name: "Oberer Kunstraum Nebenraum"
-nummer: "1.412"
-bilder:
-  - name: "nord"
-  - name: "ost"
-  - name: "süd"
-  - name: "west"
-    verbindung: "1.411.1/west"
----
-
-name: "Oberer Kunstraum"
 nummer: "1.411.2"
 bilder:
  - name: "nord"
@@ -519,7 +498,7 @@ bilder:
 - name: "süd"
 - name: "west"
  verbindung: "-1.502.1"
- verbindung: "-1.502.3"
+# verbindung: "-1.502.3"
 ---
 
 name: "Flur Sprachlabor"
