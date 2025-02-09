@@ -42,6 +42,7 @@ const base = import.meta.env.BASE_URL
 			<h1 class="text-xl font-bold">FSG Roomtour</h1>
 			<a href={`${base}`}>Zur Raumliste</a>
 			<a href={`${base}/map/eg`}>Zur Karte</a>
+			<a href={`${base}/settings`}>Einstellungen</a>
 		</header>
 		<main>
 			<slot />
@@ -54,5 +55,8 @@ const base = import.meta.env.BASE_URL
 	body {
 		margin: 0;
 		min-height: 100svh;
+	}
+	header>* {
+		display: block;
 	}
 </style>
