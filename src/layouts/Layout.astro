@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import "../styles/global.css"
+import StyleLoader from '../components/StyleLoader';
 
 interface Props {
 	title?: string,
@@ -36,8 +37,10 @@ const base = import.meta.env.BASE_URL
 				return <link href={tag.href} rel={tag.rel} fetchpriority={tag.priority} as={tag.as} />
 			})
 		}
+		
 	</head>
 	<body>
+		<StyleLoader client:only="preact"/>
 		<header>
 			<h1 class="text-xl font-bold">FSG Roomtour</h1>
 			<a href={`${base}`}>Zur Raumliste</a>
