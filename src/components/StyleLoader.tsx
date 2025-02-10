@@ -56,15 +56,42 @@ function getFromStorage() {
     }
 }
 
+let broadCastChannel: BroadcastChannel | undefined = undefined
 export default function StyleLoader() {
     const [styles, setStyles] = useState(getFromStorage())
     
-    document.addEventListener("storage_update", (_e)=>{
-        console.log("STORAGE update");
+
+    useEffect(()=>{
+        const abort = new AbortController()
+        broadCastChannel ||= new BroadcastChannel("storage_update")
         
-        setStyles(getFromStorage())
-        //TODO: optimize to only load when relevant keys have changed
-    })
+        broadCastChannel.addEventListener("message", ()=>{
+            console.log("Recived event");
+            setTimeout(()=>{
+                console.log("EXEC");
+                setStyles(getFromStorage())
+                console.log(broadCastChannel);
+            }, 500)
+        }, {
+            signal: abort.signal
+        })
+        console.log(broadCastChannel);
+
+        document.addEventListener("storage_update", (_e)=>{            
+            setStyles(getFromStorage())
+            //TODO: optimize to only load when relevant keys have changed
+        }, {
+            signal: abort.signal
+        })
+        console.info("Setup event listeners for user style changes");
+        return ()=>{
+            abort.abort()
+            broadCastChannel?.close()
+            broadCastChannel = undefined
+            console.info("Removed event listeners for user style changes")
+        }
+    }, [])
+    
 
     useEffect(()=>{
         const root = document.getElementsByTagName("html")[0]!

@@ -1,10 +1,19 @@
-import { useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 import { type ColorScheme, type PreferredContrast, type PreferredMotion, validateColorScheme, validateContrast, validateMotion  } from "./StyleLoader";
 
+let broadCastChannel: BroadcastChannel | undefined = undefined
 export default function StyleSettings() {
     const [colorScheme, setColorSchemeState] = useState<ColorScheme>(validateColorScheme(localStorage.getItem("customization_color_scheme") ?? "system") ?? "system")
     const [preferredContrast, setPreferredContrastState] = useState<PreferredContrast>(validateContrast(localStorage.getItem("customization_contrast") ?? "system") ?? "system")
     const [preferredMotion, setPreferredMotionState] = useState<PreferredMotion>(validateMotion(localStorage.getItem("customization_motion") ?? "system") ?? "system")
+    
+    useEffect(()=>{
+        broadCastChannel ||= new BroadcastChannel("storage_update")
+
+        return ()=>{
+            broadCastChannel?.close()
+        }
+    }, [])
 
     function updateColorScheme(new_scheme: ColorScheme) {
         if (new_scheme === colorScheme) {
@@ -23,6 +32,7 @@ export default function StyleSettings() {
                 break;
         }
         document.dispatchEvent(new Event("storage_update"))
+        broadCastChannel?.postMessage("update")
     }
     function updateContrast(new_contrast: PreferredContrast) {
         if (new_contrast === preferredContrast) {
@@ -45,6 +55,7 @@ export default function StyleSettings() {
                 break;
         }
         document.dispatchEvent(new Event("storage_update"))
+        broadCastChannel?.postMessage("update")
     }
 
     function updateMotion(new_motion: PreferredMotion) {
@@ -65,6 +76,7 @@ export default function StyleSettings() {
                 break;
         }
         document.dispatchEvent(new Event("storage_update"))
+        broadCastChannel?.postMessage("update")
     }
 
 
