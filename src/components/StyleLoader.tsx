@@ -1,14 +1,12 @@
-import { createContext } from "preact"
-import { useContext, useEffect, useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 
-type ColorScheme = "system" | "dark" | "light"
-type PreferredContrast = "system" | "reduced" | "default" | "more"
-type PreferredMotion = "system" | "reduced" | "default"
+export type ColorScheme = "system" | "dark" | "light"
+export type PreferredContrast = "system" | "reduced" | "default" | "more"
+export type PreferredMotion = "system" | "reduced" | "default"
 
 
-const SomeContext = createContext("Hello World")
 
-function validateColorScheme(scheme: string): ColorScheme | null {
+export function validateColorScheme(scheme: string): ColorScheme | null {
     switch(scheme.toLocaleLowerCase()) {
         case "system":
             return "system"
@@ -17,10 +15,11 @@ function validateColorScheme(scheme: string): ColorScheme | null {
         case "light":
             return "light"
         default:
+            console.debug("Invalid contrast color_scheme: ", scheme)
             return null
     }
 }
-function validateContrast(contrast: string): PreferredContrast | null {
+export function validateContrast(contrast: string): PreferredContrast | null {
     switch(contrast.toLocaleLowerCase()) {
         case "system":
             return "system"
@@ -31,11 +30,12 @@ function validateContrast(contrast: string): PreferredContrast | null {
         case "more":
             return "more"
         default:
+            console.debug("Invalid contrast mode: ", contrast)
             return null
     }
 }
-function validateMotion(contrast: string): PreferredMotion | null {
-    switch(contrast.toLocaleLowerCase()) {
+export function validateMotion(preference: string): PreferredMotion | null {
+    switch(preference.toLocaleLowerCase()) {
         case "system":
             return "system"
         case "reduced":
@@ -43,6 +43,7 @@ function validateMotion(contrast: string): PreferredMotion | null {
         case "default":
             return "default"
         default:
+            console.debug("Invalid contrast motion preference: ", preference)
             return null
     }
 }
@@ -51,14 +52,16 @@ function getFromStorage() {
     return {
         color_scheme: validateColorScheme(localStorage.getItem("customization_color_scheme") ?? "system") ?? "system",
         contrast: validateContrast(localStorage.getItem("customization_contrast") ?? "system") ?? "system",
-        motion: validateMotion(localStorage.getItem("customization_contrast") ?? "system") ?? "system",
+        motion: validateMotion(localStorage.getItem("customization_motion") ?? "system") ?? "system",
     }
 }
 
 export default function StyleLoader() {
     const [styles, setStyles] = useState(getFromStorage())
     
-    window.addEventListener("storage", (_e)=>{
+    document.addEventListener("storage_update", (_e)=>{
+        console.log("STORAGE update");
+        
         setStyles(getFromStorage())
         //TODO: optimize to only load when relevant keys have changed
     })

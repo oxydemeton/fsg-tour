@@ -1,9 +1,9 @@
 ---
+import StyleSettings from "../components/StyleSettings";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
     <noscript>JavaScript ist deaktiviert. Es können keine Änderungen am Aussehen der Seite verändert werden!</noscript>
+    <StyleSettings client:only="preact"/>
 </Layout>
-
-<script></script>
