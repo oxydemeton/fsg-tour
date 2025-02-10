@@ -1,48 +1,110 @@
 @import "tailwindcss";
 
-:root {
-    color-scheme: light dark;
-    --bg-color: var(--color-white);
-    --text-color: var(--color-black);
-    --highlight-color: var(--color-blue-700);
-    --highlight-bg-color: var(--color-zinc-200);
-    --contrast-color: var(--highlight-color);
-    @media (prefers-contrast: more) {
-        --bg-color: var(--color-white);
-        --text-color: ar(--color-black);
+@layer color_scheme {
+    :root {
+        color-scheme: light dark;
+        --text-color: var(--text-color-base, white);
+        --bg-color: var(--bg-color-base, black);
+        --highlight-color: var(--highlight-color-base, blue);
+        --highlight-bg-color: var(--highlight-bg-color-base, gray);
+        --contrast-color: var(--highlight-color);
+        color: var(--text-color);
+        background-color: var(--bg-color);
+    }
+}
+
+
+@layer system_color_mode {
+    /*Light and no contrast*/
+    :root {
+        --bg-color-base: var(--color-white);
+        --text-color-base: var(--color-black);
+        --highlight-color-base: var(--color-blue-700);
+        --highlight-bg-color-base: var(--color-zinc-200);
+    }
+    /*Dark and no contrast*/
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --text-color-base: var(--color-white);
+            --bg-color-base: var(--color-zinc-800);
+            --highlight-color-base: var(--color-sky-400);
+            --highlight-bg-color-base: var(--color-zinc-700);
+        }
+    }
+}
+@layer user_color_mode {
+    :root.light {
+        color-scheme: light;
+        --bg-color-base: var(--color-white);
+        --text-color-base: var(--color-black);
+        --highlight-color-base: var(--color-blue-700);
+        --highlight-bg-color-base: var(--color-zinc-200);
+    }
+    :root.dark {
         color-scheme: dark;
-        --highlight-color: var(--color-blue-600);
-        --highlight-bg-color: var(--color-zinc-300);
-        --contrast-color: var(--color-rose-600);
+        --text-color-base: var(--color-white);
+        --bg-color-base: var(--color-zinc-800);
+        --highlight-color-base: var(--color-sky-400);
+        --highlight-bg-color-base: var(--color-zinc-700);
+    }
+}
+
+@layer system_preferred_contrast {
+    @media (prefers-contrast: more) {
+        :root {
+            /*--text-color: var(--text-color-base);*/
+            --bg-color: hsl(from var(--bg-color-base) h s calc((l-127)*2 + 255)); /*Max out lightness to basically 0 or 255*/
+            --highlight-color: hsl(from var(--highlight-color-base) h 255 l); /*Full saturation*/
+            --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s*1.5) l);
+            --contrast-color: var(--color-rose-500);
+            img {
+                filter: contrast(115%);
+            }
+        }
     }
     @media (prefers-contrast: less) {
-        --bg-color: var(--color-zinc-100);
-        --text-color: var(--color-zinc-700);
-        --highlight-color: var(--color-sky-600);
-        --highlight-bg-color: var(--color-zinc-300);
-    }
-    @media (prefers-color-scheme: dark) {
-        --text-color: var(--color-white);
-        --bg-color: var(--color-zinc-800);
-        --highlight-color: var(--color-sky-400);
-        --highlight-bg-color: var(--color-zinc-700);
-        @media (prefers-contrast: more) {
-            --text-color: var(--color-white);
-            --bg-color: var(--color-zinc-950);
-            --highlight-color: var(--color-sky-500);
-            --highlight-bg-color: var(--color-zinc-600);
-            color-scheme: light;
-            --contrast-color: var(--color-rose-500);
-        }
-        @media (prefers-contrast: less) {
-            --bg-color: var(--color-zinc-800);
-            --text-color: var(--color-zinc-300);
-            --highlight-color: var(--color-indigo-300);
-            --highlight-bg-color: var(--color-zinc-600);
+        :root {
+            --text-color: hsl(from var(--text-color-base) h calc(s * 0.8) calc(l - 128 + 128));
+            --bg-color: hsl(from var(--bg-color-base) h s l); /*Max out lightness to basically 0 or 255*/
+            --highlight-color: hsl(from var(--highlight-color-base) h calc(s / 2) l); /*Full saturation*/
+            --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s / 2) l);
+            img {
+                filter: contrast(80%);
+            }
         }
     }
-    color: var(--text-color);
-    background-color: var(--bg-color);
+}
+
+@layer user_preferred_contrast {
+    :root.default_contrast {
+        --text-color: var(--text-color-base, white);
+        --bg-color: var(--bg-color-base, black);
+        --highlight-color: var(--highlight-color-base, blue);
+        --highlight-bg-color: var(--highlight-bg-color-base, gray);
+        --contrast-color: var(--highlight-color);
+        img {
+            filter: none; /*Remove contrast filter from images*/
+        }
+    }
+    :root.more_contrast {
+        /*--text-color: var(--text-color-base);*/
+        --bg-color: hsl(from var(--bg-color-base) h s calc((l-127)*2 + 255)); /*Max out lightness to basically 0 or 255*/
+        --highlight-color: hsl(from var(--highlight-color-base) h 255 l); /*Full saturation*/
+        --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s*1.5) l);
+        --contrast-color: var(--color-rose-500);
+        img {
+            filter: contrast(115%);
+        }
+    }
+    :root.less_contrast {
+        --text-color: hsl(from var(--text-color-base) h calc(s * 0.8) calc(l - 128 + 128));
+        --bg-color: hsl(from var(--bg-color-base) h s l); /*Max out lightness to basically 0 or 255*/
+        --highlight-color: hsl(from var(--highlight-color-base) h calc(s / 2) l); /*Full saturation*/
+        --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s / 2) l);
+        img {
+            filter: contrast(80%);
+        }
+    }
 }
 
 @theme {
@@ -50,16 +112,6 @@
     --color-highlight-bg: var(--highlight-bg-color);
 }
 
-@media (prefers-contrast: less) {
-    img {
-        filter: contrast(75%);
-    }
-}
-@media (prefers-contrast: more) {
-    img {
-        filter: contrast(120%);
-    }
-}
 
 a {
     font-style: italic;
