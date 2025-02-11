@@ -1,11 +1,12 @@
 import { useEffect, useState } from "preact/hooks"
-import { type ColorScheme, type PreferredContrast, type PreferredMotion, validateColorScheme, validateContrast, validateMotion  } from "./StyleLoader";
+import { type ColorScheme, type PreferredContrast, type PreferredMotion, type PreferredTransparency, validateColorScheme, validateContrast, validateMotion, validateTransparency  } from "./StyleLoader";
 
 let broadCastChannel: BroadcastChannel | undefined = undefined
 export default function StyleSettings() {
     const [colorScheme, setColorSchemeState] = useState<ColorScheme>(validateColorScheme(localStorage.getItem("customization_color_scheme") ?? "system") ?? "system")
     const [preferredContrast, setPreferredContrastState] = useState<PreferredContrast>(validateContrast(localStorage.getItem("customization_contrast") ?? "system") ?? "system")
     const [preferredMotion, setPreferredMotionState] = useState<PreferredMotion>(validateMotion(localStorage.getItem("customization_motion") ?? "system") ?? "system")
+    const [preferredTransparency, setPreferredTransparencyState] = useState<PreferredTransparency>(validateTransparency(localStorage.getItem("customization_transparency") ?? "system") ?? "system")
     
     useEffect(()=>{
         broadCastChannel ||= new BroadcastChannel("storage_update")
@@ -78,6 +79,26 @@ export default function StyleSettings() {
         document.dispatchEvent(new Event("storage_update"))
         broadCastChannel?.postMessage("update")
     }
+    function updateTransparency(new_transparency: PreferredTransparency) {
+        if (new_transparency === preferredTransparency) {
+            return
+        }
+        setPreferredTransparencyState(new_transparency)
+        
+        switch (new_transparency) {
+            case "default":
+                localStorage.setItem("customization_transparency", "default")
+                break;
+            case "reduced":
+                localStorage.setItem("customization_transparency", "reduced")
+                break;
+            case "system":
+                localStorage.setItem("customization_transparency", "system")
+                break;
+        }
+        document.dispatchEvent(new Event("storage_update"))
+        broadCastChannel?.postMessage("update")
+    }
 
 
     return <section role="form">
@@ -96,11 +117,16 @@ export default function StyleSettings() {
             <input type="radio" name="contrast" id="contrast-reduced" checked={preferredContrast === "reduced"} onInput={()=>updateContrast("reduced")}/><label htmlFor="contrast-reduced">weniger Kontrast</label>
         </fieldset>
         <fieldset>
-            <legend>Verringertebewegung</legend>
+            <legend>Verringerte Bewegungen</legend>
             <input type="radio" name="motion" id="motion-system" checked={preferredMotion === "system"} onInput={()=>updateMotion("system")}/><label htmlFor="motion-system">Systemeinstellung</label>
             <input type="radio" name="motion" id="motion-reduced" checked={preferredMotion === "reduced"} onInput={()=>updateMotion("reduced")}/><label htmlFor="motion-reduced">weniger Bewegungen</label>
             <input type="radio" name="motion" id="motion-default" checked={preferredMotion === "default"} onInput={()=>updateMotion("default")}/><label htmlFor="motion-default">alle Bewegungen</label>
         </fieldset>
-        
+        <fieldset>
+            <legend>Verringerte Transparenzen</legend>
+            <input type="radio" name="transparency" id="transparency-system" checked={preferredTransparency === "system"} onInput={()=>updateTransparency("system")}/><label htmlFor="transparency-system">Systemeinstellung</label>
+            <input type="radio" name="transparency" id="transparency-reduced" checked={preferredTransparency === "reduced"} onInput={()=>updateTransparency("reduced")}/><label htmlFor="transparency-reduced">weniger Transparenzen</label>
+            <input type="radio" name="transparency" id="transparency-default" checked={preferredTransparency === "default"} onInput={()=>updateTransparency("default")}/><label htmlFor="transparency-default">alle Transparenzen</label>
+        </fieldset>
     </section>
 }

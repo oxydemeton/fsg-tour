@@ -257,9 +257,7 @@ const base = import.meta.env.BASE_URL
     }
     line, polyline, path, rect {
         stroke: currentColor;
-        @media not (prefers-reduced-transparency) {
-            opacity: 0.8;/*lightly transparent strokes so when the one in focus or hovered can shine through*/
-        }
+        opacity: max(var(--min-transparency), 0.6);/*lightly transparent strokes so when the one in focus or hovered can shine through*/
         stroke-width: 8;
         fill: transparent;
         padding: 0;
@@ -300,9 +298,7 @@ const base = import.meta.env.BASE_URL
     }
     .map-treppe line {
         stroke-width: 2;
-        @media not (prefers-reduced-transparency) {
-            opacity: .5;
-        }
+        opacity: max(var(--min-transparency), 0.5);
         @media (prefers-contrast: more) {
             stroke-width: 3;
             opacity: 1;

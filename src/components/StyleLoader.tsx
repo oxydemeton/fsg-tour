@@ -3,7 +3,7 @@ import { useEffect, useState } from "preact/hooks"
 export type ColorScheme = "system" | "dark" | "light"
 export type PreferredContrast = "system" | "reduced" | "default" | "more"
 export type PreferredMotion = "system" | "reduced" | "default"
-
+export type PreferredTransparency = "system" | "reduced" | "default"
 
 
 export function validateColorScheme(scheme: string): ColorScheme | null {
@@ -47,12 +47,26 @@ export function validateMotion(preference: string): PreferredMotion | null {
             return null
     }
 }
+export function validateTransparency(preference: string): PreferredTransparency | null {
+    switch(preference.toLocaleLowerCase()) {
+        case "system":
+            return "system"
+        case "reduced":
+            return "reduced"
+        case "default":
+            return "default"
+        default:
+            console.debug("Invalid transparency preference: ", preference)
+            return null
+    }
+}
 
 function getFromStorage() {
     return {
         color_scheme: validateColorScheme(localStorage.getItem("customization_color_scheme") ?? "system") ?? "system",
         contrast: validateContrast(localStorage.getItem("customization_contrast") ?? "system") ?? "system",
         motion: validateMotion(localStorage.getItem("customization_motion") ?? "system") ?? "system",
+        transparency: validateTransparency(localStorage.getItem("customization_transparency") ?? "system") ?? "system",
     }
 }
 
@@ -144,6 +158,20 @@ export default function StyleLoader() {
             case "default":
                 root.classList.remove("less_motion")
                 root.classList.add("default_motion")
+                break;
+        }
+        switch(styles.transparency) {
+            case "system":
+                root.classList.remove("less_transparency")
+                root.classList.remove("default_transparency")
+                break;
+            case "reduced":
+                root.classList.add("less_transparency")
+                root.classList.remove("default_transparency")
+                break;
+            case "default":
+                root.classList.remove("less_transparency")
+                root.classList.add("default_transparency")
                 break;
         }
         console.log("Updated customization classes", styles);        

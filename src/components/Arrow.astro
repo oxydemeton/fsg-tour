@@ -26,10 +26,8 @@
         }
     }
     @media (prefers-contrast: less) {
-        @media not (prefers-reduced-transparency) {
-            svg {
-                opacity: 50%;
-            }
+        svg {
+            opacity: max(var(--min-transparency), 0.5);
         }
     }
 </style>

@@ -11,6 +11,7 @@
         color: var(--text-color);
         background-color: var(--bg-color);
         scroll-behavior: smooth;
+        --min-transparency: 0;
     }
 }
 
@@ -112,6 +113,15 @@
     :root:not(.default_motion) {
         scroll-behavior: unset;
     }
+}
+
+@media (prefers-reduced-transparency) {
+    :root:not(.default_transparency) {
+        --min-transparency: 1;
+    }
+}
+:root.less_transparency {
+    --min-transparency: 1;
 }
 
 @theme {
