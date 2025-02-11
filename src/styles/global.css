@@ -10,6 +10,7 @@
         --contrast-color: var(--highlight-color);
         color: var(--text-color);
         background-color: var(--bg-color);
+        scroll-behavior: smooth;
     }
 }
 
@@ -104,6 +105,12 @@
         img {
             filter: contrast(80%);
         }
+    }
+}
+
+@media (prefers-reduced-motion) {
+    :root:not(.default_motion) {
+        scroll-behavior: unset;
     }
 }
 
