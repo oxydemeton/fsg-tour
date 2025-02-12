@@ -14,8 +14,9 @@
     /**TODO react to user style customization with transparency and preferred contrast */
     .outliner {
         --stroke-base-color: var(--color-white);
-        stroke-width:  calc(3 * clamp(1, var(--preferred-contrast), 1.1));
-        stroke: color-mix(in oklab, var(--stroke-base-color) max(100% * var(--min-transparency), 80% * var(--preferred-contrast)), transparent);
+        stroke-width:  calc(3px * clamp(1, var(--preferred-contrast), 1.1));
+        stroke: var(--stroke-base-color);
+        opacity: max(100% * var(--min-transparency), 80% * var(--preferred-contrast));
     }
     svg {
         opacity: max(var(--min-transparency), clamp(0.5, var(--preferred-contrast), 1));
