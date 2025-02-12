@@ -14,22 +14,10 @@
     /**TODO react to user style customization with transparency and preferred contrast */
     .outliner {
         --stroke-base-color: var(--color-white);
-        stroke-width: 3;
-        stroke: color-mix(in oklab, var(--stroke-base-color) 80%, transparent);
-        @media (prefers-contrast: more) {
-            stroke-width: 4;
-            stroke: color-mix(in oklab, var(--stroke-base-color) 80%, transparent);
-        }
-        @media (prefers-contrast: less) {
-            stroke: color-mix(in oklab, var(--stroke-base-color) 20%, transparent);
-        }
-        @media (prefers-reduced-transparency) {
-            stroke: var(--stroke-base-color);
-        }
+        stroke-width:  calc(3 * clamp(1, var(--preferred-contrast), 1.1));
+        stroke: color-mix(in oklab, var(--stroke-base-color) max(100% * var(--min-transparency), 80% * var(--preferred-contrast)), transparent);
     }
-    @media (prefers-contrast: less) {
-        svg {
-            opacity: max(var(--min-transparency), 0.5);
-        }
+    svg {
+        opacity: max(var(--min-transparency), clamp(0.5, var(--preferred-contrast), 1));
     }
 </style>
