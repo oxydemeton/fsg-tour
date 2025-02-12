@@ -5,9 +5,11 @@ import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
+import preact from "@astrojs/preact";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap()],
+  integrations: [sitemap(), preact()],
   compressHTML: true,
   site: "https://oxydemeton.github.io",
   base: "fsg-tour",
