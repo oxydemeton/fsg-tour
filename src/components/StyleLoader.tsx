@@ -4,7 +4,7 @@ export type ColorScheme = "system" | "dark" | "light"
 export type PreferredContrast = "system" | "reduced" | "default" | "more"
 export type PreferredMotion = "system" | "reduced" | "default"
 export type PreferredTransparency = "system" | "reduced" | "default"
-
+export type FontSize = "system" | number
 
 export function validateColorScheme(scheme: string): ColorScheme | null {
     switch(scheme.toLocaleLowerCase()) {
@@ -61,12 +61,24 @@ export function validateTransparency(preference: string): PreferredTransparency 
     }
 }
 
+export function validateFontSize(preference: string): FontSize | null {
+    const number = parseInt(preference, 10)
+    if (!Number.isNaN(number)) {
+        return number
+    }
+    if (preference.toLocaleLowerCase() === "system") {
+        return "system"
+    }
+    return null
+}
+
 function getFromStorage() {
     return {
         color_scheme: validateColorScheme(localStorage.getItem("customization_color_scheme") ?? "system") ?? "system",
         contrast: validateContrast(localStorage.getItem("customization_contrast") ?? "system") ?? "system",
         motion: validateMotion(localStorage.getItem("customization_motion") ?? "system") ?? "system",
         transparency: validateTransparency(localStorage.getItem("customization_transparency") ?? "system") ?? "system",
+        font_size: validateFontSize(localStorage.getItem("customization_font_size") ?? "system") ?? "system",
     }
 }
 
@@ -82,7 +94,6 @@ export default function StyleLoader() {
         broadCastChannel.addEventListener("message", ()=>{
             console.log("Recived event");
             setTimeout(()=>{
-                console.log("EXEC");
                 setStyles(getFromStorage())
                 console.log(broadCastChannel);
             }, 500)
@@ -174,6 +185,13 @@ export default function StyleLoader() {
                 root.classList.add("default_transparency")
                 break;
         }
+
+        if (styles.font_size === "system") {
+            root.style.fontSize = "100%"
+        } else {
+            root.style.fontSize = `${styles.font_size}px`
+        }
+
         console.log("Updated customization classes", styles);        
     }, [styles])
 

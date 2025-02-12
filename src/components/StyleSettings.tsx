@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks"
-import { type ColorScheme, type PreferredContrast, type PreferredMotion, type PreferredTransparency, validateColorScheme, validateContrast, validateMotion, validateTransparency  } from "./StyleLoader";
+import { type ColorScheme, type FontSize, type PreferredContrast, type PreferredMotion, type PreferredTransparency, validateColorScheme, validateContrast, validateFontSize, validateMotion, validateTransparency  } from "./StyleLoader";
 
 let broadCastChannel: BroadcastChannel | undefined = undefined
 export default function StyleSettings() {
@@ -7,6 +7,7 @@ export default function StyleSettings() {
     const [preferredContrast, setPreferredContrastState] = useState<PreferredContrast>(validateContrast(localStorage.getItem("customization_contrast") ?? "system") ?? "system")
     const [preferredMotion, setPreferredMotionState] = useState<PreferredMotion>(validateMotion(localStorage.getItem("customization_motion") ?? "system") ?? "system")
     const [preferredTransparency, setPreferredTransparencyState] = useState<PreferredTransparency>(validateTransparency(localStorage.getItem("customization_transparency") ?? "system") ?? "system")
+    const [fontSize, setFontSizeState] = useState<FontSize>(validateFontSize(localStorage.getItem("customization_font_size") ?? "system") ?? "system",)
     
     useEffect(()=>{
         broadCastChannel ||= new BroadcastChannel("storage_update")
@@ -100,6 +101,16 @@ export default function StyleSettings() {
         broadCastChannel?.postMessage("update")
     }
 
+    function updateFontSize(newFontSize: FontSize) {
+        if (newFontSize === fontSize) {
+            return
+        }
+        setFontSizeState(newFontSize)
+        localStorage.setItem("customization_font_size", newFontSize.toString(10))
+        document.dispatchEvent(new Event("storage_update"))
+        broadCastChannel?.postMessage("update")
+    }
+
 
     return <section role="form">
         <h2>Einstellungen</h2>
@@ -127,6 +138,26 @@ export default function StyleSettings() {
             <input type="radio" name="transparency" id="transparency-system" checked={preferredTransparency === "system"} onInput={()=>updateTransparency("system")}/><label htmlFor="transparency-system">Systemeinstellung</label>
             <input type="radio" name="transparency" id="transparency-reduced" checked={preferredTransparency === "reduced"} onInput={()=>updateTransparency("reduced")}/><label htmlFor="transparency-reduced">weniger Transparenzen</label>
             <input type="radio" name="transparency" id="transparency-default" checked={preferredTransparency === "default"} onInput={()=>updateTransparency("default")}/><label htmlFor="transparency-default">alle Transparenzen</label>
+        </fieldset>
+        <fieldset>
+            <legend>Schriftgröße</legend>
+            <input type="number" name="fontSize" id="font-size" class="outline outline-current p-0.5 rounded-md mx-1" 
+                pattern="/^-?\d+\.?\d*$/" min={10}
+                value={(fontSize === "system")? "" : fontSize}
+                onInput={(e)=>{
+                    if (e.currentTarget.value.trim().length <= 0) {
+                        updateFontSize("system")
+                    } else {
+                        const num = parseInt(e.currentTarget.value, 10)
+                        if (!isNaN(num)) {
+                            updateFontSize(Math.max(10, num))
+                        } else {
+                            return false
+                        }
+                    }
+                }}
+                />
+                <label htmlFor="font-size">Schriftgröße in px (kein Wert -&gt; Gerätestandard)</label>
         </fieldset>
     </section>
 }
