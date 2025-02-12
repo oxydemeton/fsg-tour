@@ -292,6 +292,7 @@ const base = import.meta.env.BASE_URL
     .map-treppe rect {
         fill: none;
         stroke-width: 3;
+        /*TODO react to user preference for more contrast*/
         @media (prefers-contrast: more) {
             stroke-width: 5;
         }
@@ -299,6 +300,7 @@ const base = import.meta.env.BASE_URL
     .map-treppe line {
         stroke-width: 2;
         opacity: max(var(--min-transparency), 0.5);
+        /*TODO react to user preference for more contrast*/
         @media (prefers-contrast: more) {
             stroke-width: 3;
             opacity: 1;
