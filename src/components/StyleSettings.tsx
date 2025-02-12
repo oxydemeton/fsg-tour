@@ -142,7 +142,7 @@ export default function StyleSettings() {
         <fieldset>
             <legend>Schriftgröße</legend>
             <input type="number" name="fontSize" id="font-size" class="outline outline-current p-0.5 rounded-md mx-1" 
-                pattern="/^-?\d+\.?\d*$/" min={10}
+                pattern="/^-?\d+\.?\d*$/" min={10} max={36}
                 value={(fontSize === "system")? "" : fontSize}
                 onInput={(e)=>{
                     if (e.currentTarget.value.trim().length <= 0) {
@@ -150,7 +150,7 @@ export default function StyleSettings() {
                     } else {
                         const num = parseInt(e.currentTarget.value, 10)
                         if (!isNaN(num)) {
-                            updateFontSize(Math.max(10, num))
+                            updateFontSize(Math.max(10, Math.min(num, 36)))
                         } else {
                             return false
                         }

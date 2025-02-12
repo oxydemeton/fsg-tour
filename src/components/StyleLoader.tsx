@@ -96,7 +96,7 @@ export default function StyleLoader() {
             setTimeout(()=>{
                 setStyles(getFromStorage())
                 console.log(broadCastChannel);
-            }, 500)
+            }, 100)
         }, {
             signal: abort.signal
         })
