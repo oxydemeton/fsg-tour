@@ -31,13 +31,9 @@
             height: auto;
             aspect-ratio: 3/2;
         }
-        @media not (prefers-reduced-motion) {
-            &>.zoomable-astro-inner {
-                transition: width 150ms ease-in;
-            }
-        }
         &>.zoomable-astro-inner>div {
             border: 1px solid var(--highlight-color);
+            transition: width calc(100ms * var(--transition-time-factor)) ease-in;
             @media (prefers-contrast: more) {
                 border: 3px solid var(--highlight-color);
             }

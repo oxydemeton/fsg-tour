@@ -12,6 +12,7 @@
         background-color: var(--bg-color);
         scroll-behavior: smooth;
         --min-transparency: 0;
+        --transition-time-factor: 1; /*To reduce motion*/
     }
 }
 
@@ -112,7 +113,12 @@
 @media (prefers-reduced-motion) {
     :root:not(.default_motion) {
         scroll-behavior: unset;
+        --transition-time-factor: 0;
     }
+}
+:root.less_motion {
+    scroll-behavior: unset;
+    --transition-time-factor: 0;
 }
 
 @media (prefers-reduced-transparency) {
