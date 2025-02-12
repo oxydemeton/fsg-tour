@@ -257,7 +257,7 @@ const base = import.meta.env.BASE_URL
     }
     line, polyline, path, rect {
         stroke: currentColor;
-        opacity: max(var(--min-transparency), 0.6);/*lightly transparent strokes so when the one in focus or hovered can shine through*/
+        opacity: max(var(--min-transparency), 0.6 * clamp(0.75, var(--preferred-contrast), 1.25));/*lightly transparent strokes so when the one in focus or hovered can shine through*/
         stroke-width: 8;
         fill: transparent;
         padding: 0;
