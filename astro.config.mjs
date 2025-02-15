@@ -17,7 +17,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
       build: {
-        reportCompressedSize: true, //Set to false to improve build speed
+        reportCompressedSize: false, //Set to false to improve build speed
         minify: "terser",
       }
   },
