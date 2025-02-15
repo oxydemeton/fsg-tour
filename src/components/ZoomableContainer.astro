@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class="zoomable-astro w-[90vw] overflow-scroll">
+<div class="zoomable-astro w-[90vw]">
     <div class="zoomable-astro-indicator-group">
         <button type="button" class="zoomable-astro-dec" aria-label="heraus zoomen" role="button">-</button>
         <span class="zoomable-astro-indicator">Zoom: 100%</span>
@@ -20,6 +20,8 @@
         max-height: 90svh;
         aspect-ratio: 3/2;
         container: zoom / size;
+        overflow: auto;
+        scrollbar-gutter: stable both-edges;
         @media (pointer: coarse) {
             .zoomable-astro-inner{
                 max-width: 100% !important;

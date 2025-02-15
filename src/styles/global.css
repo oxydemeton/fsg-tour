@@ -14,6 +14,10 @@
         --min-transparency: 0;
         --transition-time-factor: 1; /*To reduce motion*/
         --preferred-contrast: 1; /*1 default, 0.5 reduced, 2 more*/
+        --scroll-bar-color: inherit;
+    }
+    * {
+        scrollbar-color: var(--scroll-bar-color, auto);
     }
 }
 
@@ -78,6 +82,7 @@
             --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s*1.5) l);
             --contrast-color: var(--color-rose-500);
             --preferred-contrast: 2;
+            --scroll-bar-color: var(--color-orange-400) var(--color-fuchsia-800);
             img {
                 filter: contrast(115%);
             }
@@ -90,6 +95,7 @@
             --highlight-color: hsl(from var(--highlight-color-base) h calc(s / 2) l); /*Full saturation*/
             --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s / 2) l);
             --preferred-contrast: 0.5;
+            --scroll-bar-color: var(--color-neutral-400) var(--color-neutral-800);
             img {
                 filter: contrast(80%);
             }
@@ -105,6 +111,7 @@
         --highlight-bg-color: var(--highlight-bg-color-base, gray);
         --contrast-color: var(--highlight-color);
         --preferred-contrast: 1;
+        --scroll-bar-color: inherit;
         img {
             filter: none; /*Remove contrast filter from images*/
         }
@@ -116,6 +123,7 @@
         --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s*1.5) l);
         --contrast-color: var(--color-rose-500);
         --preferred-contrast: 2;
+        --scroll-bar-color: var(--color-orange-400) var(--color-fuchsia-800);
         img {
             filter: contrast(115%);
         }
@@ -126,6 +134,7 @@
         --highlight-color: hsl(from var(--highlight-color-base) h calc(s / 2) l); /*Full saturation*/
         --highlight-bg-color: hsl(from var(--highlight-bg-color-base) h calc(s / 2) l);
         --preferred-contrast: 0.5;
+        --scroll-bar-color: var(--color-neutral-400) var(--color-neutral-500);
         img {
             filter: contrast(80%);
         }
