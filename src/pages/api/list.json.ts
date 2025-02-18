@@ -12,7 +12,8 @@ export const GET: APIRoute = async ({ url }) => {
     const rooms = roomsCollected.map(r=>({
         name: r.data.name,
         id: r.data.slug,
-        url: `${url.origin}${baseUrl}/${r.data.slug}/${r.data.bilder[0].name}`
+        url: `${url.origin}${baseUrl}/${r.data.slug}/${r.data.bilder[0].name}`,
+        images: r.data.bilder.map(i=>i.image.src.split("/").at(-1))
     }))    
     
     
