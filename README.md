@@ -3,6 +3,8 @@ Dieses Repository enthält den aktuellen Stand eines Schüler Projekts des aktue
 Das Ziel ist es einen digitalen Rundgang durch das noch aktuelle Schulgebäude, auch nach dem Neubau, zu ermöglichen.
 Die aktuellste Version kann aktuell unter [oxydemeton.github.io/fsg-tour](https://oxydemeton.github.io/fsg-tour/) angesehen werden. In der Zukunft wird es eine offizielle Seite unter [fsggeldern.de](https://fsggeldern.de/) geben.
 
+Hinweis: Es wird ein aktueller Browser empfohlen (Chrome >=120, Firefox >= 117, Safari/iOS >= 17.2 oder weite Browser auf Chrome basis)
+
 ## Die aktuelle Version lokal ansehen
 ### Vo­r­aus­set­zungen
 - [NodeJs](https://nodejs.org/de) Version 20 oder neuer inklusive NPM
