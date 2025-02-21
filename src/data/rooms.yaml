@@ -715,69 +715,69 @@ bilder:
 - name: "süd"
 - name: "west"
  verbindung: "-1.503.2/west"
-# ---
+---
 
-# name: "Archiv Sprachlabor" 
-# nummer: "-1.506.1"
-# bilder: 
-# - name: "nord"
-# - name: "ost"
-#  verbindung: "-1.506.2/ost"
-# - name: "süd"
-# - name: "west"
-#  verbindung: "-1.505.3/west"
-# ---
+name: "Archiv Sprachlabor" 
+nummer: "-1.506.1"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.506.2/ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.505.3/west"
+---
 
-# name: "Archiv Sprachlabor"
-# nummer: "-1.506.2"
-# bilder: 
-# - name: "nord"
-# - name: "ost"
-# - name: "süd"
-# - name: "west"
-#  verbindung: "-1.506.1/west"
-# ---
+name: "Archiv Sprachlabor"
+nummer: "-1.506.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+- name: "west"
+ verbindung: "-1.506.1/west"
+---
 
-# name: "Treppe Kunstraum UG"
-# nummer: "-1.501.1" 
-# bilder: 
-# - name: "nord"
-#  verbindung: "-1.506.2/nord"
-# - name: "ost"
-# - name: "süd"
-#  verbindung: "-1.502.1/süd"
-# - name: "west"
-# ---
+name: "Treppe Kunstraum UG"
+nummer: "-1.501.1" 
+bilder: 
+- name: "nord"
+ verbindung: "-1.506.2/nord" #??
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.502.1/süd"
+- name: "west"
+---
 
-# name: "Treppe Kunstraum UG" 
-# nummer: "-1.501.2"
-# bilder: 
-# - name: "nord"
-# - name: "ost"
-# - name: "süd"
-#  verbindung: "-1.501.1/süd"
-# - name: "west"
-#  verbindung: "-1.501.3/west"
-# ---
+name: "Treppe Kunstraum UG" 
+nummer: "-1.501.2"
+bilder: 
+- name: "nord"
+- name: "ost"
+- name: "süd"
+ verbindung: "-1.501.1/süd"
+- name: "west"
+ verbindung: "-1.501.3/west"
+---
 
-# name: "Treppe Kunstraum UG"
-# nummer: "-1.501.3"
-# bilder: 
-# - name: "nord"
-# - name: "ost"
-#  verbindung: "-1.501.2/ost"
-# - name: "süd"
-#  verbindung: "0.411.1/süd"
-# - name: "west"
-# ---
+name: "Treppe Kunstraum UG"
+nummer: "-1.501.3"
+bilder: 
+- name: "nord"
+- name: "ost"
+ verbindung: "-1.501.2/ost"
+- name: "süd"
+ verbindung: "0.411.1/süd"
+- name: "west"
+---
 
-# name: "Treppe Kunstraum EG"
-# nummer: "0.411.1"
-# bilder: 
-# - name: "nord"
-#  verbindung: "-1.501.3/nord"
-# - name: "ost"
-#  verbindung: "0.411.2/ost"
-# - name: "süd"
-#  verbindung: ""
-# - name: "west"
+name: "Treppe Kunstraum EG"
+nummer: "0.411.1"
+bilder: 
+- name: "nord"
+ verbindung: "-1.501.3/nord"
+- name: "ost"
+ verbindung: "0.411.2/ost"
+- name: "süd"
+ verbindung: ""
+- name: "west"
