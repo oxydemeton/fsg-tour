@@ -423,7 +423,7 @@ const base = import.meta.env.BASE_URL
         z-index: -10;
     }
     a:hover :where(path, line, rect) {
-        fill: var(--highlight-bg-color);
+        fill: oklch(from var(--highlight-bg-color) l c h / 0.75);
         stroke: var(--highlight-color);
         border: none;
         stroke-width: 14;
