@@ -89,6 +89,7 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
         overflow: auto;
         scrollbar-width: thin;
         border: 1px solid lime;
+        /*TODO add reduced transparency*/
         background: oklch(from var(--highlight-bg-color) l c h / 0.9);
     }
 </style>
@@ -102,7 +103,7 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
     console.log(aTags);
     
     for(const a of aTags) {
-        //@ts-expect-error
+        //@ts-expect-error beacuse of SVGAnimatedString
         const href = a.href.baseVal
         
         if (href.includes(roomId)) {
