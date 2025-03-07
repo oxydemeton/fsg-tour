@@ -17,15 +17,3 @@ const base = import.meta.env.BASE_URL
         <Map/>
     </MapContainer>
 </Layout>
-
-<script>
-    const svg = document.getElementsByTagName("svg")[0] as SVGElement
-    const aTags = svg.querySelectorAll("a")
-    for(const a of aTags) {
-        //@ts-expect-error
-        const href = (a.href as SVGAnimatedString).baseVal
-        if (href.includes("1.411")) {
-            console.log(a);
-        }
-    }
-</script>

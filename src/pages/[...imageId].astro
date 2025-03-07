@@ -6,6 +6,7 @@ import AttachIcon from "../assets/icons/attach.svg";
 import TravelExploreIcon from "../assets/icons/travel_explore.svg";
 import Zoomable from "../components/ZoomableContainer.astro";
 import Arrow from "../components/Arrow.astro";
+import MapOG from "../components/map/MapOG.astro";
 
 import { fade } from "astro:transitions";
 
@@ -37,31 +38,76 @@ const prevLowQuality = await getImage({src: data.bilder.at(imageId-1)!.image, ..
 const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bilder.length)!.image, ...lowQualitySettings})
 //TODO prefetch transit low quality image
 ---
-
 <Layout title={`FSG-Tour - ${room.data.name}`} preloads={[{href: prevLowQuality.src, priority: "low", rel: "prefetch", as: "image"},  {href: nextLowQuality.src, priority: "low", rel: "prefetch", as: "image"}]}>
     <h1 class="text-center">{room.data.name}</h1>
     <h2 class="text-center">Richtung: {local.name}</h2>
     <div class="flex justify-center">
         <div>
             <div class="relative"}>
+                <!--Image -->
                 <Zoomable>
                     <Image format={"avif"} quality={50} src={local.image} alt={local.name} width="1824" transition:animate={fade({duration: 700})} class="-z-10 w-full h-full"
                     style=`background-repeat: no-repeat; background-size: 100% 100%; background-image: url(${lowQuality.src})` loading="eager"/>
                 </Zoomable>
+
+                <!--Move left arrow -->
                 <a href={prevImageUrl} class="absolute top-[50%] left-4 -rotate-90" data-astro-prefetch="viewport" aria-label="Ansicht nach link drehen">
                     <Arrow/>
                 </a>
+
+                <!--Move forward arrow -->
                 {(typeof local.verbindung === "string") ? 
                     <a href={transitImageUrl} class="absolute top-4 right-[50%]" data-astro-prefetch="viewport" aria-label="Nach vorne gehen">
                         <Arrow/>
                     </a>
                     : undefined}
+                
+                <!--Move right arrow -->
                 <a href={nextImageUrl} class="absolute top-[50%] right-4 rotate-90" data-astro-prefetch="viewport" aria-label="Ansicht nach rechts drehen">
                     <Arrow/>
                 </a>
+
+                <!--Map -->
+                <div id="map">
+                    <div style="width: 50rem;">
+                        <MapOG/>
+                    </div>
+                </div>
             </div>
             <a href={originalImage.src} class="w-full hover:italic focus-visible:italic "><Image src={AttachIcon} alt="Attachment/Original Image" class="inline-block rotate-45 dark:invert" loading="eager"/>Original Bild</a>
             <a href={`${baseUrl}/`} class="w-full hover:italic focus-visible:italic "><Image src={TravelExploreIcon} alt="Map/Übersicht" class="inline-block dark:invert" loading="eager"/>Zurück zur Übersicht</a>
         </div>
     </div>
 </Layout>
+
+<style>
+    #map {
+        position: absolute;
+        width: 12rem;
+        height: 8rem;
+        top: 0;
+        overflow: auto;
+        scrollbar-width: thin;
+        border: 1px solid lime;
+        background: oklch(from var(--highlight-bg-color) l c h / 0.9);
+    }
+</style>
+<meta name="x-room-id" content={room.id}/>
+<script>
+    const roomId = (document.querySelector('meta[name="x-room-id"') as HTMLMetaElement).content
+    
+    const svg = document.querySelector("svg#svg-map") as SVGElement
+    
+    const aTags = svg.getElementsByTagName("a")
+    console.log(aTags);
+    
+    for(const a of aTags) {
+        //@ts-expect-error
+        const href = a.href.baseVal
+        
+        if (href.includes(roomId)) {
+            console.log(a);
+            a.scrollIntoView({behavior: "instant", block: "center", inline: "center"})
+        }
+    }
+</script>
