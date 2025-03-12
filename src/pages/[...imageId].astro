@@ -88,27 +88,34 @@ const nextLowQuality = await getImage({src: data.bilder.at((imageId+1)%data.bild
         top: 0;
         overflow: auto;
         scrollbar-width: thin;
-        border: 1px solid lime;
+        border: 1px solid var(--highlight-color);
         /*TODO add reduced transparency*/
         background: oklch(from var(--highlight-bg-color) l c h / 0.9);
+        .focus-room :where(path, line, rect) {
+            stroke: var(--highlight-color);
+        }
     }
 </style>
 <meta name="x-room-id" content={room.id}/>
 <script>
-    const roomId = (document.querySelector('meta[name="x-room-id"') as HTMLMetaElement).content
-    
-    const svg = document.querySelector("svg#svg-map") as SVGElement
-    
-    const aTags = svg.getElementsByTagName("a")
-    console.log(aTags);
-    
-    for(const a of aTags) {
-        //@ts-expect-error beacuse of SVGAnimatedString
-        const href = a.href.baseVal
+    document.addEventListener("astro:page-load", () => {
+        // Your script logic here
+        const roomId = (document.querySelector('meta[name="x-room-id"') as HTMLMetaElement).content
         
-        if (href.includes(roomId)) {
-            console.log(a);
-            a.scrollIntoView({behavior: "instant", block: "center", inline: "center"})
+        const svg = document.querySelector("svg#svg-map") as SVGElement
+        
+        const aTags = svg.getElementsByTagName("a")
+        console.log(aTags);
+        
+        for(const a of aTags) {
+            //@ts-expect-error beacuse of SVGAnimatedString
+            const href = a.href.baseVal
+            
+            if (href.includes(roomId)) {
+                console.log("Focus map tag: ", a);
+                a.scrollIntoView({behavior: "instant", block: "center", inline: "center"})
+                a.classList.add("focus-room")
+            }
         }
-    }
+    })
 </script>
